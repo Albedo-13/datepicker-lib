@@ -22,6 +22,9 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitAny": false,
+    "declaration": true,
+    // TODO: outDir OR declarationDir
+    "declarationDir": "dist",
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]

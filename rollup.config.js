@@ -2,9 +2,9 @@ import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
 import postcssModules from "postcss-modules";
 import postcss from "rollup-plugin-postcss";
-import typescript from "@rollup/plugin-typescript";
 
 // TODO: https://github.com/vitejs/vite/issues/12446
 
@@ -14,7 +14,7 @@ const esmPlugins = [
   resolve(),
   commonjs(),
   typescript({
-    compilerOptions: { lib: ["es5", "es6", "dom"], target: "es5" },
+    tsconfig: "./tsconfig.json",
   }),
   babel({
     babelHelpers: "bundled",
