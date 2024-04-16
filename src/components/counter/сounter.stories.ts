@@ -1,6 +1,6 @@
 import type { Meta } from "@storybook/react";
 
-import { Counter } from "./Counter";
+import { Counter } from "./сounter";
 
 export default {
   title: "MyGroup/Counter",

@@ -4,7 +4,9 @@ import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import postcssModules from "postcss-modules";
 import postcss from "rollup-plugin-postcss";
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
+
+// TODO: https://github.com/vitejs/vite/issues/12446
 
 const isDev = process.env.NODE_ENV === "development";
 
@@ -12,13 +14,10 @@ const esmPlugins = [
   resolve(),
   commonjs(),
   typescript({
-    tsconfig: "./tsconfig.json",
-    declaration: true,
-    declarationDir: "dist",
-    sourcemap: isDev,
+    compilerOptions: { lib: ["es5", "es6", "dom"], target: "es5" },
   }),
   babel({
-    babelHelpers: 'bundled',
+    babelHelpers: "bundled",
     exclude: "node_modules/**",
     presets: [
       "@babel/preset-env",
@@ -46,7 +45,7 @@ if (!isDev) {
  * @type {import('rollup').RollupOptions}
  */
 const esmConfig = {
-  input: "src/index.tsx",
+  input: "./src/index.tsx",
   output: [
     {
       dir: "dist",
