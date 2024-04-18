@@ -1,5 +1,6 @@
-import { MONTHS } from "@/constants/constants";
 import React from "react";
+
+import { MONTHS } from "@/constants/constants";
 
 export default function CalendarHead({ year, setYear, month, setMonth, onMonthDecrement, onMonthIncrement }) {
   return (

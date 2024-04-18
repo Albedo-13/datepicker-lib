@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Cell } from "../cell/cell";
-
-import * as S from "./styles";
 import { CALENDAR_CELLS_SIZE } from "@/constants/constants";
-import { getDayFromDate, getStartDateFromPreviousMonth, nextDate } from "@/utils/dateUtils";
+import { getDayFromDate, getStartDateFromPreviousMonth, isDayBelongsToMonth, nextDate } from "@/utils/dateUtils";
+
+import { Cell } from "../cell/cell";
+import * as S from "./styles";
 
 export default function CalendarBody({ year, setYear, month, setMonth }) {
   const startDate = getStartDateFromPreviousMonth(year, month);
@@ -13,8 +13,14 @@ export default function CalendarBody({ year, setYear, month, setMonth }) {
   return (
     <S.CalendarBody>
       {Array.from({ length: CALENDAR_CELLS_SIZE }).map((item, id) => {
+        const date = nextDate(startDate, id);
+        const outside = isDayBelongsToMonth(date, month);
         return (
-          <Cell key={`${id}-${month}-${year}`} date={nextDate(startDate, id)} />
+          <Cell 
+            key={`${id}-${month}-${year}`} 
+            date={date} 
+            data-outside={outside} 
+          />
         );
       })}
     </S.CalendarBody>

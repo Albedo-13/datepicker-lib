@@ -4,7 +4,7 @@ const Cell = styled.div`
   padding: 10px;
   width: 30px;
   height: 30px;
-  background: #fff;
+  /* background: #fff; */
   font-weight: 600;
   font-size: 13px;
   color: #333;
@@ -16,6 +16,10 @@ const Cell = styled.div`
 
   &:hover {
     background-color: red;
+  }
+
+  [data-outside='true'] {
+    background-color: yellow;
   }
 `;
 

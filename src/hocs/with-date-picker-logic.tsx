@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export function withDatePickerLogic(Component) {
-  return () => {
+  return function datePickerLogic () {
     const [year, setYear] = useState(2024);
     const [month, setMonth] = useState(12);
 

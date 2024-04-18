@@ -8,6 +8,7 @@ export function Cell({ date }) {
 
   const handleClick = () => {
     console.log("click", cellDate);
+    console.log()
   }
 
   return <S.Cell onClick={handleClick}>{day}</S.Cell>;

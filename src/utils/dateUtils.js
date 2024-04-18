@@ -11,7 +11,7 @@ export const getStartDateFromPreviousMonth = (currentYear, currentMonth) => {
 };
 
 export const getWeekdayOfMonthStart = (year, month) => {
-  const date = new Date(year, month, 1, 0, 0, 0, 0);
+  // const date = new Date(year, month, 1, 0, 0, 0, 0);
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, 1, 0, -offset, 0, 0).getDay();
 };
@@ -34,4 +34,4 @@ export const nextDate = (date, value) => {
   return next;
 };
 
-console.log(getStartDateFromPreviousMonth(2024, 9));
+export const isDayBelongsToMonth = (date, month) => date.getMonth() === month;

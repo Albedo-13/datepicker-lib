@@ -1,6 +1,6 @@
 import React from "react";
 
-import { withDatePickerLogic } from "@/hocs/withDatePickerLogic";
+import { withDatePickerLogic } from "@/hocs/with-date-picker-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
 
 import { Calendar } from "../calendar/calendar";
