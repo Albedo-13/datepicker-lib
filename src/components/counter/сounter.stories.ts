@@ -8,10 +8,4 @@ export default {
   tags: ["autodocs"],
 } satisfies Meta<typeof Counter>;
 
-
-export const DefaultCounter = {
-  // args: {
-  //   primary: true,
-  //   label: 'Counter',
-  // },
-};
+export const DefaultCounter = {};
