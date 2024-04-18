@@ -6,8 +6,6 @@ import typescript from "@rollup/plugin-typescript";
 import postcssModules from "postcss-modules";
 import postcss from "rollup-plugin-postcss";
 
-// TODO: https://github.com/vitejs/vite/issues/12446
-
 const isDev = process.env.NODE_ENV === "development";
 
 const esmPlugins = [

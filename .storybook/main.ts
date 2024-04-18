@@ -17,20 +17,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  // TODO: NOT WORKING THO
-  // babel: async (options) => ({
-  //   ...options,
-  //   presets: [
-  //     ...options.presets,
-  //     [
-  //       "@babel/preset-react",
-  //       {
-  //         runtime: "automatic",
-  //       },
-  //       "preset-react-jsx-transform", // Can name this anything, just an arbitrary alias to avoid duplicate presets'
-  //     ],
-  //   ],
-  // }),
   webpackFinal: async (config) => {
     if (config.resolve) {
       config.resolve.plugins = [
