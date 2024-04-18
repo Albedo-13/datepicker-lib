@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 
 export function withDatePickerLogic(Component) {
-  const handleFunnyClick = () => {
-    console.log(`
-      — Мам, смотри, снегирь! У тебя хлеб есть?\n
-      — Без хлеба ешь!
-    `);
-  };
-
   return () => {
-    const [digit, setDigit] = useState(0);
+    const [year, setYear] = useState(2024);
+    const [month, setMonth] = useState(9);
+
+    console.log(year, month);
 
     return (
       <>
         <Component
-          handleFunnyClick={handleFunnyClick}
-          digit={digit}
-          setDigit={setDigit}
+          year={year}
+          setYear={setYear}
+          month={month}
+          setMonth={setMonth}
         />
       </>
     );

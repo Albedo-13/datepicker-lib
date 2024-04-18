@@ -2,21 +2,24 @@ import React from "react";
 
 import { Container } from "@/styles/style";
 
-import { Cell } from "../cell/cell";
+import CalendarBody from "../calendar-body/calendar-body";
+import CalendarHead from "../calendar-head/calendar-head";
 
-import * as S from "./styles";
-
-export function Calendar() {
+export function Calendar({ year, setYear, month, setMonth }) {
   return (
     <Container>
-      <S.Calendar>
-        {[
-          0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 1, 2,
-          3, 0, 0, 0, 0, 0, 0,
-        ].map((item, id) => (
-          <Cell key={id} day={item} />
-        ))}
-      </S.Calendar>
+      <CalendarHead
+        year={year}
+        setYear={setYear}
+        month={month}
+        setMonth={setMonth}
+      />
+      <CalendarBody
+        year={year}
+        setYear={setYear}
+        month={month}
+        setMonth={setMonth}
+      />
     </Container>
   );
 }
