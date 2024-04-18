@@ -21,11 +21,5 @@ export default function CalendarBody({ year, setYear, month, setMonth }) {
   );
 }
 
-
-// TODO: в хок добавить цикл до константы 35, в котором с getStartDateFromPreviousMonth
-// начнем цикл, куда будем добавлять значения с getStartDateFromPreviousMonth + 1 день
-// до константы 35
-
 // TODO: функция в хок, которая будет определять data атрибут компонента Cell.
 // дата атрибут будет определять стили компонента Cell.
-
