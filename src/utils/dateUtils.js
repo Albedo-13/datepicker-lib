@@ -31,8 +31,10 @@ export const monthThumb = (monthName) => monthName.slice(0, 3);
 export const nextDate = (date, value) => {
   const next = new Date(date);
   next.setDate(date.getDate() + value);
-  console.log(next);
+  // console.log(next);
   return next;
 };
 
 export const isDayBelongsToMonth = (date, month) => date.getMonth() !== (month - 1);
+
+export const isDatesEqual = (date1, date2) => date1?.toString() === date2?.toString();

@@ -22,6 +22,11 @@ const Cell = styled.div`
   &[data-outside="true"] {
     color: #AAAAAA;
   }
+
+  &[data-picked="true"] {
+    color: white;
+    background-color: #2f80ed;
+  }
 `;
 
 export { Cell };
