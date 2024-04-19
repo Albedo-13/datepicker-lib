@@ -1,13 +1,32 @@
 import React from "react";
 
+//@ts-expect-error Typescript cant recognize svg files
+import arrowNext from "@/assets/Next.svg";
+//@ts-expect-error Typescript cant recognize svg files
+import arrowPrev from "@/assets/Prev.svg";
 import { MONTHS } from "@/constants/constants";
 
-export default function CalendarHead({ year, setYear, month, setMonth, onMonthDecrement, onMonthIncrement }) {
+import * as S from "./styles";
+
+export default function CalendarHead({
+  year,
+  setYear,
+  month,
+  setMonth,
+  onMonthDecrement,
+  onMonthIncrement,
+}) {
   return (
-    <>
-      <button onClick={onMonthDecrement}>{`<-`}</button>
-      {MONTHS[month - 1]} {year}
-      <button onClick={onMonthIncrement}>{`->`}</button>
-    </>
+    <S.CalendarHead>
+      <S.CalendarHeadButton onClick={onMonthDecrement}>
+        <img src={arrowPrev} alt="arrow left previous month" />
+      </S.CalendarHeadButton>
+      <S.CalendarDate onClick={() => {}}>
+        {MONTHS[month - 1]} {year}
+      </S.CalendarDate>
+      <S.CalendarHeadButton onClick={onMonthIncrement}>
+        <img src={arrowNext} alt="arrow right next month" />
+      </S.CalendarHeadButton>
+    </S.CalendarHead>
   );
 }
