@@ -5,7 +5,6 @@ import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 import postcssModules from "postcss-modules";
 import postcss from "rollup-plugin-postcss";
-import svg from 'rollup-plugin-svg-import';
 
 const isDev = process.env.NODE_ENV === "development";
 
