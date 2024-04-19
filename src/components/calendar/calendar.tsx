@@ -10,8 +10,10 @@ export function Calendar({
   setYear,
   month,
   setMonth,
-  pickedCell,
-  setPickedCell,
+  fromRange,
+  setFromRange,
+  toRange,
+  setToRange,
   onMonthDecrement,
   onMonthIncrement,
   startWeekday
@@ -31,8 +33,10 @@ export function Calendar({
         setYear={setYear}
         month={month}
         setMonth={setMonth}
-        pickedCell={pickedCell}
-        setPickedCell={setPickedCell}
+        fromRange={fromRange}
+        setFromRange={setFromRange}
+        toRange={toRange}
+        setToRange={setToRange}
         startWeekday={startWeekday}
       />
     </Container>

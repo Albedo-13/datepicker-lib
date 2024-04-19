@@ -13,19 +13,35 @@ const Cell = styled.div`
   justify-content: center;
   cursor: pointer;
   border-radius: 8px;
-  // TODO: unselectable text
+  user-select: none;
+  transition: 0.1s all;
 
   &:hover {
-    background-color: red;
+    color: #2f80ed;
+    background-color: #2f80ed1a;
+    transition: 0.1s all;
   }
 
   &[data-outside="true"] {
-    color: #AAAAAA;
+    color: #aaaaaa;
   }
 
-  &[data-picked="true"] {
+  &[data-between="true"] {
+    color: #2f80ed;
+    background-color: #2f80ed1a;
+    transition: 0.2s all;
+  }
+
+  &[data-to="true"] {
+    color: white;
+    background-color: #2f80ed99;
+    transition: 0.2s all;
+  }
+
+  &[data-from="true"] {
     color: white;
     background-color: #2f80ed;
+    transition: 0.2s all;
   }
 `;
 

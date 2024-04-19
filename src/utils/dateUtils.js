@@ -38,3 +38,20 @@ export const nextDate = (date, value) => {
 export const isDayBelongsToMonth = (date, month) => date.getMonth() !== (month - 1);
 
 export const isDatesEqual = (date1, date2) => date1?.toString() === date2?.toString();
+
+export const isBetweenDates = (currentDate, dateBorder1, dateBorder2) => {
+  
+  if (currentDate && dateBorder1 && dateBorder2) {
+    const [borderLeft, borderRight] = [dateBorder1, dateBorder2].sort((a, b) => a.getTime() - b.getTime());
+    // console.log(currentDate, borderLeft, borderRight);
+    return currentDate >= borderLeft && currentDate <= borderRight;
+  }
+  return false;
+
+}
+
+console.log(isBetweenDates(
+  new Date("Mon Nov 24 2024 03:00:00 GMT+0300 (Москва, стандартное время)"),
+  new Date("Mon Nov 26 2024 03:00:00 GMT+0300 (Москва, стандартное время)"),
+  new Date("Mon Nov 26 2024 03:00:00 GMT+0300 (Москва, стандартное время)"),
+));

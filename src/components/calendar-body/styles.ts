@@ -15,7 +15,8 @@ const WeekdayCell = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  // TODO: unselectable text
+  user-select: none;
+  user-drag: none;
 `;
 
 export { CalendarBody, WeekdayCell };

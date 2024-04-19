@@ -35,5 +35,10 @@
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx"
   ],
-  "exclude": ["node_modules", "build", "dist"]
+  "exclude": ["node_modules", "build", "dist"],
+  "plugins": [
+    {
+      "name": "@styled/typescript-styled-plugin"
+    }
+  ]
 }

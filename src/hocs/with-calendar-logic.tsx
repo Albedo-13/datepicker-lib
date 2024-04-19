@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { WEEKDAYS } from "@/constants/constants";
 import { WeekdaysItemType } from "@/types/types";
 
-export function withDatePickerLogic(Component, startFromMonday) {
-  return function datePickerLogic() {
+export function withCalendarLogic(Component, startFromMonday) {
+  return function calendarLogic() {
     const [year, setYear] = useState(2024);
     const [month, setMonth] = useState(12);
 
-    const [pickedCell, setPickedCell] = useState(null);
-    // const [fromRange, setFromRange] = useState(null);
-    // const [toRange, setToRange] = useState(null);
+    // const [pickedCell, setPickedCell] = useState(null);
+    const [fromRange, setFromRange] = useState(null);
+    const [toRange, setToRange] = useState(null);
 
     const startWeekday: WeekdaysItemType = startFromMonday
       ? WEEKDAYS.fromMonday
@@ -41,8 +41,10 @@ export function withDatePickerLogic(Component, startFromMonday) {
           setYear={setYear}
           month={month}
           setMonth={setMonth}
-          pickedCell={pickedCell}
-          setPickedCell={setPickedCell}
+          fromRange={fromRange}
+          setFromRange={setFromRange}
+          toRange={toRange}
+          setToRange={setToRange}
           onMonthIncrement={handleMonthIncrement}
           onMonthDecrement={handleMonthDecrement}
           startWeekday={startWeekday}

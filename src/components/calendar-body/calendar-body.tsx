@@ -16,8 +16,10 @@ export default function CalendarBody({
   setYear,
   month,
   setMonth,
-  pickedCell,
-  setPickedCell,
+  fromRange,
+  setFromRange,
+  toRange,
+  setToRange,
   startWeekday,
 }) {
   const startDate = getStartDateFromPreviousMonth(
@@ -34,17 +36,18 @@ export default function CalendarBody({
           <S.WeekdayCell key={`${id}-${weekday}`}>{weekday}</S.WeekdayCell>
         );
       })}
-      {Array.from({ length: CALENDAR_CELLS_SIZE }).map((item, id) => {
+      {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
         const date = nextDate(startDate, id);
         const outside = isDayBelongsToMonth(date, month);
-        const picked = isDatesEqual(date, pickedCell);
         return (
           <Cell
             key={`${id}-${month}-${year}`}
             date={date}
             outside={outside}
-            picked={picked} //
-            setPickedCell={setPickedCell}
+            fromRange={fromRange}
+            setFromRange={setFromRange}
+            toRange={toRange}
+            setToRange={setToRange}
           />
         );
       })}

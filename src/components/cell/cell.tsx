@@ -1,19 +1,44 @@
 import React, { useState } from "react";
 
+import { isBetweenDates, isDatesEqual } from "@/utils/dateUtils";
+
 import * as S from "./styles";
 
-export function Cell({ date, outside, picked, setPickedCell }) {
+export function Cell({
+  date,
+  outside,
+  fromRange,
+  setFromRange,
+  toRange,
+  setToRange,
+}) {
   // TODO: basic variable?
+  // TODO: hoist data to hoc
+  // TODO: "to" state to range picker?
+  // TODO: rename from and to => pickedDate and rangeToDate?
   const [cellDate, setCellDate] = useState(date);
   const day = cellDate.getDate();
+  const from = isDatesEqual(date, fromRange);
+  const to = isDatesEqual(date, toRange);
 
-  const handleClick = () => {
-    console.log("click", cellDate);
-    setPickedCell(cellDate);
+  const handleMouseDownClick = () => {
+    setToRange(null);
+    setFromRange(cellDate);
+  };
+
+  const handleOtherClick = () => {
+    setToRange(cellDate);
   };
 
   return (
-    <S.Cell onClick={handleClick} data-outside={outside} data-picked={picked}>
+    <S.Cell
+      onMouseDown={handleMouseDownClick}
+      onMouseUp={handleOtherClick}
+      data-outside={outside}
+      data-from={from}
+      data-to={to}
+      data-between={isBetweenDates(date, fromRange, toRange)}
+    >
       {day}
     </S.Cell>
   );
