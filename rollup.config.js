@@ -32,8 +32,7 @@ const esmPlugins = [
         minimize: !isDev,
       }),
     ],
-  }),
-  svg(),
+  })
 ];
 
 if (!isDev) {

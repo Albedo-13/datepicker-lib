@@ -8,6 +8,9 @@ import { MONTHS } from "@/constants/constants";
 
 import * as S from "./styles";
 
+// !TODO: svgs to components
+// TODO: global calendar state between days | months | years (in range?)
+
 export default function CalendarHead({
   year,
   setYear,
