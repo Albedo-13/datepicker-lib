@@ -1,13 +1,14 @@
 export const getDaysFromMonth = (year, month) =>
   new Date(year, month, 0).getDate();
 
-export const getStartDateFromPreviousMonth = (currentYear, currentMonth) => {
+export const getStartDateFromPreviousMonth = (currentYear, currentMonth, weekdayOffset = 1) => {
   let weekdayOfCurrentMonthStart = getWeekdayOfMonthStart(currentYear, currentMonth);
   weekdayOfCurrentMonthStart = weekdayOfCurrentMonthStart === 0 ? 7 : weekdayOfCurrentMonthStart;
   const daysFromMonth = getDaysFromMonth(currentYear, currentMonth - 1);
   const leftDaysFromPreviousMonth = daysFromMonth - (daysFromMonth - weekdayOfCurrentMonthStart) - 1;
   const offset = getTimezoneOffset(currentYear, currentMonth);
-  return new Date(currentYear, currentMonth - 1, -leftDaysFromPreviousMonth + 1, 0, -offset, 0, 0);
+  // TODO: -leftDaysFromPreviousMonth + 1 Change +1 to + 0 if need to start from Sunday
+  return new Date(currentYear, currentMonth - 1, -leftDaysFromPreviousMonth + weekdayOffset, 0, -offset, 0, 0);
 };
 
 export const getWeekdayOfMonthStart = (year, month) => {
@@ -34,4 +35,4 @@ export const nextDate = (date, value) => {
   return next;
 };
 
-export const isDayBelongsToMonth = (date, month) => date.getMonth() === month;
+export const isDayBelongsToMonth = (date, month) => date.getMonth() !== (month - 1);

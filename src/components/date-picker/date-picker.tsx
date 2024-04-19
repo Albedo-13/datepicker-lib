@@ -5,8 +5,14 @@ import { GlobalStyles } from "@/styles/globalStyles";
 
 import { Calendar } from "../calendar/calendar";
 
-export function DatePicker() {
-  const DatePickerWithLogic = withDatePickerLogic(Calendar);
+interface DatePickerProps {
+  startFromMonday: boolean,
+}
+
+export function DatePicker({
+  startFromMonday
+}: DatePickerProps) {
+  const DatePickerWithLogic = withDatePickerLogic(Calendar, startFromMonday);
 
   return (
     <div>

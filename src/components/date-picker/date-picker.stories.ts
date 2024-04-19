@@ -10,8 +10,7 @@ export default {
 
 
 export const DefaultDatePicker = {
-  // args: {
-  //   primary: true,
-  //   label: 'Counter',
-  // },
+  args: {
+    startFromMonday: true,
+  },
 };

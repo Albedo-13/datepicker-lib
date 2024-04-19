@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 
-export function withDatePickerLogic(Component) {
-  return function datePickerLogic () {
+import { WEEKDAYS } from "@/constants/constants";
+import { WeekdaysItemType } from "@/types/types";
+
+export function withDatePickerLogic(Component, startFromMonday) {
+  return function datePickerLogic() {
     const [year, setYear] = useState(2024);
     const [month, setMonth] = useState(12);
+
+    const [pickedCell, setPickedCell] = useState(null);
+    // const [fromRange, setFromRange] = useState(null);
+    // const [toRange, setToRange] = useState(null);
+
+    const startWeekday: WeekdaysItemType = startFromMonday
+      ? WEEKDAYS.fromMonday
+      : WEEKDAYS.fromSunday;
 
     const handleMonthIncrement = () => {
       if (month === 12) {
@@ -23,8 +34,6 @@ export function withDatePickerLogic(Component) {
       }
     };
 
-    console.log(year, month);
-
     return (
       <>
         <Component
@@ -32,8 +41,11 @@ export function withDatePickerLogic(Component) {
           setYear={setYear}
           month={month}
           setMonth={setMonth}
+          pickedCell={pickedCell}
+          setPickedCell={setPickedCell}
           onMonthIncrement={handleMonthIncrement}
           onMonthDecrement={handleMonthDecrement}
+          startWeekday={startWeekday}
         />
       </>
     );

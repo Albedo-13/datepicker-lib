@@ -5,7 +5,15 @@ import { Container } from "@/styles/style";
 import CalendarBody from "../calendar-body/calendar-body";
 import CalendarHead from "../calendar-head/calendar-head";
 
-export function Calendar({ year, setYear, month, setMonth, onMonthDecrement, onMonthIncrement }) {
+export function Calendar({
+  year,
+  setYear,
+  month,
+  setMonth,
+  onMonthDecrement,
+  onMonthIncrement,
+  startWeekday
+}) {
   return (
     <Container>
       <CalendarHead
@@ -21,6 +29,7 @@ export function Calendar({ year, setYear, month, setMonth, onMonthDecrement, onM
         setYear={setYear}
         month={month}
         setMonth={setMonth}
+        startWeekday={startWeekday}
       />
     </Container>
   );
