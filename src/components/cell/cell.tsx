@@ -7,6 +7,7 @@ import * as S from "./styles";
 export function Cell({
   date,
   outside,
+  weekend,
   fromRange,
   setFromRange,
   toRange,
@@ -35,6 +36,7 @@ export function Cell({
       onMouseDown={handleMouseDownClick}
       onMouseUp={handleOtherClick}
       data-outside={outside}
+      data-weekend={weekend}
       data-from={from}
       data-to={to}
       data-between={isBetweenDates(date, fromRange, toRange)}

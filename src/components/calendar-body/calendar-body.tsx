@@ -5,6 +5,7 @@ import {
   getStartDateFromPreviousMonth,
   isDatesEqual,
   isDayBelongsToMonth,
+  isWeekendOrHoliday,
   nextDate,
 } from "@/utils/dateUtils";
 
@@ -39,11 +40,13 @@ export default function CalendarBody({
       {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
         const date = nextDate(startDate, id);
         const outside = isDayBelongsToMonth(date, month);
+        const weekend = isWeekendOrHoliday(date);
         return (
           <Cell
             key={`${id}-${month}-${year}`}
             date={date}
             outside={outside}
+            weekend={weekend}
             fromRange={fromRange}
             setFromRange={setFromRange}
             toRange={toRange}

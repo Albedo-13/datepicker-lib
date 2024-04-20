@@ -1,14 +1,33 @@
+import { holidays } from "@/mocks/holidays";
+
 export const getDaysFromMonth = (year, month) =>
   new Date(year, month, 0).getDate();
 
-export const getStartDateFromPreviousMonth = (currentYear, currentMonth, weekdayOffset = 1) => {
-  let weekdayOfCurrentMonthStart = getWeekdayOfMonthStart(currentYear, currentMonth);
-  weekdayOfCurrentMonthStart = weekdayOfCurrentMonthStart === 0 ? 7 : weekdayOfCurrentMonthStart;
+export const getStartDateFromPreviousMonth = (
+  currentYear,
+  currentMonth,
+  weekdayOffset = 1
+) => {
+  let weekdayOfCurrentMonthStart = getWeekdayOfMonthStart(
+    currentYear,
+    currentMonth
+  );
+  weekdayOfCurrentMonthStart =
+    weekdayOfCurrentMonthStart === 0 ? 7 : weekdayOfCurrentMonthStart;
   const daysFromMonth = getDaysFromMonth(currentYear, currentMonth - 1);
-  const leftDaysFromPreviousMonth = daysFromMonth - (daysFromMonth - weekdayOfCurrentMonthStart) - 1;
+  const leftDaysFromPreviousMonth =
+    daysFromMonth - (daysFromMonth - weekdayOfCurrentMonthStart) - 1;
   const offset = getTimezoneOffset(currentYear, currentMonth);
   // TODO: -leftDaysFromPreviousMonth + 1 Change +1 to + 0 if need to start from Sunday
-  return new Date(currentYear, currentMonth - 1, -leftDaysFromPreviousMonth + weekdayOffset, 0, -offset, 0, 0);
+  return new Date(
+    currentYear,
+    currentMonth - 1,
+    -leftDaysFromPreviousMonth + weekdayOffset,
+    0,
+    -offset,
+    0,
+    0
+  );
 };
 
 export const getWeekdayOfMonthStart = (year, month) => {
@@ -35,23 +54,47 @@ export const nextDate = (date, value) => {
   return next;
 };
 
-export const isDayBelongsToMonth = (date, month) => date.getMonth() !== (month - 1);
+export const isDayBelongsToMonth = (date, month) =>
+  date.getMonth() !== month - 1;
 
-export const isDatesEqual = (date1, date2) => date1?.toString() === date2?.toString();
+export const isDatesEqual = (date1, date2) =>
+  date1?.toString() === date2?.toString();
 
 export const isBetweenDates = (currentDate, dateBorder1, dateBorder2) => {
-  
   if (currentDate && dateBorder1 && dateBorder2) {
-    const [borderLeft, borderRight] = [dateBorder1, dateBorder2].sort((a, b) => a.getTime() - b.getTime());
+    const [borderLeft, borderRight] = [dateBorder1, dateBorder2].sort(
+      (a, b) => a.getTime() - b.getTime()
+    );
     // console.log(currentDate, borderLeft, borderRight);
     return currentDate >= borderLeft && currentDate <= borderRight;
   }
   return false;
+};
 
+const isHoliday = (month, day) => {
+  return holidays.some((holiday) => {
+    console.log("month", holiday.date.month, month);
+    console.log("day", holiday.date.day, day);
+    return holiday.date.month === month && holiday.date.day === day;
+  });
 }
 
-console.log(isBetweenDates(
-  new Date("Mon Nov 24 2024 03:00:00 GMT+0300 (Москва, стандартное время)"),
-  new Date("Mon Nov 26 2024 03:00:00 GMT+0300 (Москва, стандартное время)"),
-  new Date("Mon Nov 26 2024 03:00:00 GMT+0300 (Москва, стандартное время)"),
-));
+const isWeekend = (date) => {
+  return date.getDay() === 6 || date.getDay() === 0;
+}
+
+export const isWeekendOrHoliday = (date) => {
+  // isWeekend(date) || 
+  console.log(date);
+  return isWeekend(date) || isHoliday(date.getMonth() + 1, date.getDate());
+};
+
+
+console.log(isWeekendOrHoliday(new Date("Wed Jan 1 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+console.log(isWeekendOrHoliday(new Date("Tue Dec 31 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+// console.log(isWeekendOrHoliday(new Date("Tue Dec 3 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+// console.log(isWeekendOrHoliday(new Date("Wed Dec 4 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+// console.log(isWeekendOrHoliday(new Date("Thu Dec 5 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+// console.log(isWeekendOrHoliday(new Date("Fri Dec 6 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+// console.log(isWeekendOrHoliday(new Date("Sat Dec 7 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+// console.log(isWeekendOrHoliday(new Date("Sun Dec 8 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))

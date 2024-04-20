@@ -43,6 +43,14 @@ const Cell = styled.div`
     background-color: #2f80ed;
     transition: 0.2s all;
   }
+
+  &[data-weekend="true"] {
+    color: red;
+  }
+
+  &[data-outside="true"][data-weekend="true"] {
+    color: pink;
+  }
 `;
 
 export { Cell };
