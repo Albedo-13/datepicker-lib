@@ -65,36 +65,20 @@ export const isBetweenDates = (currentDate, dateBorder1, dateBorder2) => {
     const [borderLeft, borderRight] = [dateBorder1, dateBorder2].sort(
       (a, b) => a.getTime() - b.getTime()
     );
-    // console.log(currentDate, borderLeft, borderRight);
     return currentDate >= borderLeft && currentDate <= borderRight;
   }
   return false;
 };
 
 const isHoliday = (month, day) => {
-  return holidays.some((holiday) => {
-    console.log("month", holiday.date.month, month);
-    console.log("day", holiday.date.day, day);
-    return holiday.date.month === month && holiday.date.day === day;
-  });
-}
+  return holidays.some(
+    (holiday) => holiday.date.month === month && holiday.date.day === day
+  );
+};
 
 const isWeekend = (date) => {
   return date.getDay() === 6 || date.getDay() === 0;
-}
-
-export const isWeekendOrHoliday = (date) => {
-  // isWeekend(date) || 
-  console.log(date);
-  return isWeekend(date) || isHoliday(date.getMonth() + 1, date.getDate());
 };
 
-
-console.log(isWeekendOrHoliday(new Date("Wed Jan 1 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-console.log(isWeekendOrHoliday(new Date("Tue Dec 31 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-// console.log(isWeekendOrHoliday(new Date("Tue Dec 3 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-// console.log(isWeekendOrHoliday(new Date("Wed Dec 4 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-// console.log(isWeekendOrHoliday(new Date("Thu Dec 5 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-// console.log(isWeekendOrHoliday(new Date("Fri Dec 6 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-// console.log(isWeekendOrHoliday(new Date("Sat Dec 7 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
-// console.log(isWeekendOrHoliday(new Date("Sun Dec 8 2024 03:00:00 GMT+0300 (Москва, стандартное время)")))
+export const isWeekendOrHoliday = (date) =>
+  isWeekend(date) || isHoliday(date.getMonth() + 1, date.getDate());
