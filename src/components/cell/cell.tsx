@@ -23,7 +23,7 @@ export function Cell({
   const to = isDatesEqual(date, toRange);
 
   const handleMouseDownClick = () => {
-    setToRange(null);
+    setToRange(cellDate);
     setFromRange(cellDate);
   };
 
