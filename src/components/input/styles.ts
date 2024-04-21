@@ -2,9 +2,16 @@ import { styled } from "styled-components";
 
 const InputWrapper = styled.div`
   position: relative;
+  user-select: none;
+  border-radius: 8px;
+  border: 1px solid #e1e1e1;
+
+  &[data-valid="false"] {
+    border: 1px solid red;
+  }
 `;
 
-const InputButtonLeft = styled.div`
+const InputButtonLeft = styled.button`
   border: none;
   background-color: transparent;
   background-color: none;
@@ -18,7 +25,7 @@ const InputButtonLeft = styled.div`
   bottom: 0;
 `;
 
-const InputButtonRight = styled.div`
+const InputButtonRight = styled.button`
   border: none;
   background-color: transparent;
   background-color: none;
@@ -34,10 +41,11 @@ const InputButtonRight = styled.div`
 
 const Input = styled.input`
   padding: 10px 40px;
-  border-radius: 8px;
-  border: 1px solid #e1e1e1;
   width: calc(100% - (80px + 2px));
   font-size: 18px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
 
   &::placeholder {
     color: #bbb;
