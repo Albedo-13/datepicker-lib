@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { WEEKDAYS } from "@/constants/constants";
+import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
 import { WeekdaysItemType } from "@/types/types";
 
 export function withCalendarLogic(Component, startFromMonday) {
@@ -16,15 +16,12 @@ export function withCalendarLogic(Component, startFromMonday) {
       ? WEEKDAYS.fromMonday
       : WEEKDAYS.fromSunday;
 
-    // const FIRST_MONTH = 1;
-    // const LAST_MONTH = 12;
-
     const handleMonthChange = (value) => () => {
-      if (value > 0 && month === 12) {
-        setMonth(1);
+      if (value > 0 && month === LAST_MONTH) {
+        setMonth(FIRST_MONTH);
         setYear((prevYear) => prevYear + value);
-      } else if (value < 0 && month === 1) {
-        setMonth(12);
+      } else if (value < 0 && month === FIRST_MONTH) {
+        setMonth(LAST_MONTH);
         setYear((prevYear) => prevYear + value);
       } else {
         setMonth((prevMonth) => prevMonth + value);

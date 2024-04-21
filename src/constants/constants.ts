@@ -20,3 +20,6 @@ export const WEEKDAYS = {
   fromMonday: { thumbs: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"], calendarOffset: 1 },
   fromSunday: { thumbs: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"], calendarOffset: 0 },
 };
+
+export const FIRST_MONTH = 1;
+export const LAST_MONTH = 12;
