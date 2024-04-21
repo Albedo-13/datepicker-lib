@@ -18,7 +18,6 @@ export const getStartDateFromPreviousMonth = (
   const leftDaysFromPreviousMonth =
     daysFromMonth - (daysFromMonth - weekdayOfCurrentMonthStart) - 1;
   const offset = getTimezoneOffset(currentYear, currentMonth);
-  // TODO: -leftDaysFromPreviousMonth + 1 Change +1 to + 0 if need to start from Sunday
   return new Date(
     currentYear,
     currentMonth - 1,
@@ -31,7 +30,6 @@ export const getStartDateFromPreviousMonth = (
 };
 
 export const getWeekdayOfMonthStart = (year, month) => {
-  // const date = new Date(year, month, 1, 0, 0, 0, 0);
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, 1, 0, -offset, 0, 0).getDay();
 };
@@ -50,7 +48,6 @@ export const monthThumb = (monthName) => monthName.slice(0, 3);
 export const nextDate = (date, value) => {
   const next = new Date(date);
   next.setDate(date.getDate() + value);
-  // console.log(next);
   return next;
 };
 
