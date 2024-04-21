@@ -1,15 +1,13 @@
 import React from "react";
 
-//@ts-expect-error Typescript cant recognize svg files
-import arrowNext from "@/assets/Next.svg";
-//@ts-expect-error Typescript cant recognize svg files
-import arrowPrev from "@/assets/Prev.svg";
+import { NextSvg } from "@/assets/Next";
+import { PrevSvg } from "@/assets/Prev";
 import { MONTHS } from "@/constants/constants";
 
 import * as S from "./styles";
 
-// !TODO: svgs to components
 // TODO: global calendar state between days | months | years (in range?)
+// TODO: all default exports to named
 
 export default function CalendarHead({
   year,
@@ -21,15 +19,22 @@ export default function CalendarHead({
 }) {
   return (
     <S.CalendarHead>
-      <S.CalendarHeadButton onClick={onMonthDecrement}>
-        <img src={arrowPrev} alt="arrow left previous month" />
-      </S.CalendarHeadButton>
-      <S.CalendarDate onClick={() => {}}>
+      <div>
+        <S.CalendarHeadButton onClick={onMonthDecrement}>
+          <PrevSvg />
+        </S.CalendarHeadButton>
+      </div>
+      <S.CalendarDate>
         {MONTHS[month - 1]} {year}
       </S.CalendarDate>
-      <S.CalendarHeadButton onClick={onMonthIncrement}>
-        <img src={arrowNext} alt="arrow right next month" />
-      </S.CalendarHeadButton>
+      <div>
+        {/* <S.CalendarHeadButton onClick={onMonthIncrement}>
+          
+        </S.CalendarHeadButton> */}
+        <S.CalendarHeadButton onClick={onMonthIncrement}>
+          <NextSvg />
+        </S.CalendarHeadButton>
+      </div>
     </S.CalendarHead>
   );
 }

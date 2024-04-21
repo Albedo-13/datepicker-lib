@@ -25,7 +25,6 @@ const CalendarHeadButton = styled.div`
 const CalendarDate = styled.div`
   font-weight: 700;
   font-size: 20px;
-  cursor: pointer;
 `;
 
 export { CalendarDate, CalendarHead, CalendarHeadButton };
