@@ -16,22 +16,23 @@ export function withCalendarLogic(Component, startFromMonday) {
       ? WEEKDAYS.fromMonday
       : WEEKDAYS.fromSunday;
 
-    const handleMonthIncrement = () => {
-      if (month === 12) {
+    // const FIRST_MONTH = 1;
+    // const LAST_MONTH = 12;
+
+    const handleMonthChange = (value) => () => {
+      if (value > 0 && month === 12) {
         setMonth(1);
-        setYear((prevYear) => prevYear + 1);
+        setYear((prevYear) => prevYear + value);
+      } else if (value < 0 && month === 1) {
+        setMonth(12);
+        setYear((prevYear) => prevYear + value);
       } else {
-        setMonth((prevMonth) => prevMonth + 1);
+        setMonth((prevMonth) => prevMonth + value);
       }
     };
 
-    const handleMonthDecrement = () => {
-      if (month === 1) {
-        setMonth(12);
-        setYear((prevYear) => prevYear - 1);
-      } else {
-        setMonth((prevMonth) => prevMonth - 1);
-      }
+    const handleYearChange = (value) => () => {
+      setYear((prevYear) => prevYear + value);
     };
 
     return (
@@ -45,8 +46,8 @@ export function withCalendarLogic(Component, startFromMonday) {
           setFromRange={setFromRange}
           toRange={toRange}
           setToRange={setToRange}
-          onMonthIncrement={handleMonthIncrement}
-          onMonthDecrement={handleMonthDecrement}
+          handleMonthChange={handleMonthChange}
+          handleYearChange={handleYearChange}
           startWeekday={startWeekday}
         />
       </>

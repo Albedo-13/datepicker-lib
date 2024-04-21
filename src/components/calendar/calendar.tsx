@@ -14,19 +14,17 @@ export function Calendar({
   setFromRange,
   toRange,
   setToRange,
-  onMonthDecrement,
-  onMonthIncrement,
-  startWeekday
+  handleMonthChange,
+  handleYearChange,
+  startWeekday,
 }) {
   return (
     <Container>
       <CalendarHead
         year={year}
-        setYear={setYear}
         month={month}
-        setMonth={setMonth}
-        onMonthDecrement={onMonthDecrement}
-        onMonthIncrement={onMonthIncrement}
+        handleMonthChange={handleMonthChange}
+        handleYearChange={handleYearChange}
       />
       <CalendarBody
         year={year}

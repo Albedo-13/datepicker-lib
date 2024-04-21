@@ -1,40 +1,40 @@
 import React from "react";
 
-import { NextSvg } from "@/assets/Next";
-import { PrevSvg } from "@/assets/Prev";
+import { NextDoubleSvg } from "@/assets/next-double";
+import { NextSingleSvg } from "@/assets/next-single";
+import { PrevDoubleSvg } from "@/assets/prev-double";
+import { PrevSingleSvg } from "@/assets/prev-single";
 import { MONTHS } from "@/constants/constants";
 
 import * as S from "./styles";
 
-// TODO: global calendar state between days | months | years (in range?)
-// TODO: all default exports to named
-
 export default function CalendarHead({
   year,
-  setYear,
   month,
-  setMonth,
-  onMonthDecrement,
-  onMonthIncrement,
+  handleMonthChange,
+  handleYearChange,
 }) {
   return (
     <S.CalendarHead>
-      <div>
-        <S.CalendarHeadButton onClick={onMonthDecrement}>
-          <PrevSvg />
+      <S.CalendarHeadButtonWrapper>
+        <S.CalendarHeadButton onClick={handleYearChange(-1)}>
+          <PrevDoubleSvg />
         </S.CalendarHeadButton>
-      </div>
+        <S.CalendarHeadButton onClick={handleMonthChange(-1)}>
+          <PrevSingleSvg />
+        </S.CalendarHeadButton>
+      </S.CalendarHeadButtonWrapper>
       <S.CalendarDate>
         {MONTHS[month - 1]} {year}
       </S.CalendarDate>
-      <div>
-        {/* <S.CalendarHeadButton onClick={onMonthIncrement}>
-          
-        </S.CalendarHeadButton> */}
-        <S.CalendarHeadButton onClick={onMonthIncrement}>
-          <NextSvg />
+      <S.CalendarHeadButtonWrapper>
+        <S.CalendarHeadButton onClick={handleMonthChange(1)}>
+          <NextSingleSvg />
         </S.CalendarHeadButton>
-      </div>
+        <S.CalendarHeadButton onClick={handleYearChange(1)}>
+          <NextDoubleSvg />
+        </S.CalendarHeadButton>
+      </S.CalendarHeadButtonWrapper>
     </S.CalendarHead>
   );
 }

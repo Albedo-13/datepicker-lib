@@ -1,6 +1,6 @@
 import React from "react";
 
-export function CalendarSvg() {
+export function DiarySvg() {
   return (
     <svg
       width="16"

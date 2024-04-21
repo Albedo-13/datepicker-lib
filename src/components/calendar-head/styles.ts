@@ -6,6 +6,10 @@ const CalendarHead = styled.div`
   align-items: center;
 `;
 
+const CalendarHeadButtonWrapper = styled.div`
+  display: flex;
+`;
+
 const CalendarHeadButton = styled.div`
   background-color: none;
   cursor: pointer;
@@ -20,6 +24,11 @@ const CalendarHeadButton = styled.div`
     background-color: #00000010;
     transition: 0.2s all;
   }
+
+  & > svg {
+    width: 21px;
+    height: 21px;
+  }
 `;
 
 const CalendarDate = styled.div`
@@ -27,4 +36,9 @@ const CalendarDate = styled.div`
   font-size: 20px;
 `;
 
-export { CalendarDate, CalendarHead, CalendarHeadButton };
+export {
+  CalendarDate,
+  CalendarHead,
+  CalendarHeadButton,
+  CalendarHeadButtonWrapper,
+};

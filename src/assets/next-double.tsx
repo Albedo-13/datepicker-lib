@@ -1,6 +1,6 @@
 import React from "react";
 
-export function NextSvg() {
+export function NextDoubleSvg() {
   return (
     <svg
       width="16"
