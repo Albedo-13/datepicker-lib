@@ -1,9 +1,8 @@
 import React from "react";
 
-import { Container } from "@/styles/style";
-
 import CalendarBody from "../calendar-body/calendar-body";
 import CalendarHead from "../calendar-head/calendar-head";
+import * as S from "./styles";
 
 export function Calendar({
   year,
@@ -19,7 +18,7 @@ export function Calendar({
   startWeekday,
 }) {
   return (
-    <Container>
+    <S.CalendarContainer>
       <CalendarHead
         year={year}
         month={month}
@@ -37,6 +36,6 @@ export function Calendar({
         setToRange={setToRange}
         startWeekday={startWeekday}
       />
-    </Container>
+    </S.CalendarContainer>
   );
 }

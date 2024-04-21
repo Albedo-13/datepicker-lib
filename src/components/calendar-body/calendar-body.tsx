@@ -29,7 +29,6 @@ export default function CalendarBody({
     startWeekday.calendarOffset
   );
 
-  console.log("! startDate:", startDate);
   return (
     <S.CalendarBody>
       {startWeekday.thumbs.map((weekday, id) => {

@@ -4,13 +4,16 @@ const CalendarHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 10px;
 `;
 
 const CalendarHeadButtonWrapper = styled.div`
   display: flex;
 `;
 
-const CalendarHeadButton = styled.div`
+const CalendarHeadButton = styled.button`
+  border: none;
+  background-color: transparent;
   background-color: none;
   cursor: pointer;
   padding: 10px;

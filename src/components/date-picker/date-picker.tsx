@@ -1,24 +1,23 @@
 import React from "react";
 
 import { withCalendarLogic } from "@/hocs/with-calendar-logic";
+import { withInputLogic } from "@/hocs/with-input-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
 
 import { Calendar } from "../calendar/calendar";
+import * as S from "./styles";
 
 interface DatePickerProps {
-  startFromMonday: boolean,
+  startFromMonday: boolean;
 }
 
-export function DatePicker({
-  startFromMonday
-}: DatePickerProps) {
+export function DatePicker({ startFromMonday }: DatePickerProps) {
   const CalendarWithLogic = withCalendarLogic(Calendar, startFromMonday);
-  // TODO: calendar input logic
-  // TODO: календарь - абсолют. Родитель всех(?) - релатив.
-  // TODO: инпут - отдельный хок.
-  // TODO: маска валидации инпута
-  
 
+  const CalendarWithInput = withInputLogic(CalendarWithLogic);
+
+  // TODO: календарь - абсолют. Родитель всех(?) - релатив.
+  // TODO: маска валидации инпута
   // 1 TODO: сначала закончить календарь (диапазон, смена месяца, стили)
   // 2 TODO: сверстать самостоятельный инпут + новый хок для него
   // 3 TODO: общее состояние между хоками, текст в инпуте меняет календарь
@@ -26,9 +25,9 @@ export function DatePicker({
   // 5 TODO: показать/скрыть календарь по клику на иконку инпута
 
   return (
-    <div>
+    <S.Wrapper>
       <GlobalStyles />
-      <CalendarWithLogic />
-    </div>
+      <CalendarWithInput />
+    </S.Wrapper>
   );
 }

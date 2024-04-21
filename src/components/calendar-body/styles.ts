@@ -6,7 +6,7 @@ const CalendarBody = styled.div`
 `;
 
 const WeekdayCell = styled.div`
-  padding: 20px 10px 10px;
+  padding: 10px;
   width: 30px;
   height: 30px;
   font-weight: 600;

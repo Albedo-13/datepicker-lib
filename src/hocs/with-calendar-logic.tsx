@@ -4,7 +4,7 @@ import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
 import { WeekdaysItemType } from "@/types/types";
 
 export function withCalendarLogic(Component, startFromMonday) {
-  return function calendarLogic() {
+  return function calendarLogic(props) {
     const [year, setYear] = useState(2024);
     const [month, setMonth] = useState(12);
 
@@ -35,6 +35,7 @@ export function withCalendarLogic(Component, startFromMonday) {
     return (
       <>
         <Component
+          {...props}
           year={year}
           setYear={setYear}
           month={month}
