@@ -6,6 +6,7 @@ import * as S from "./styles";
 
 export function Cell({
   date,
+  setDate,
   outside,
   weekend,
   fromRange,
@@ -23,6 +24,7 @@ export function Cell({
   const to = isDatesEqual(date, toRange);
 
   const handleMouseDownClick = () => {
+    setDate(cellDate);
     setToRange(cellDate);
     setFromRange(cellDate);
   };

@@ -4,7 +4,7 @@ import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
 import { WeekdaysItemType } from "@/types/types";
 import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
 
-export function withCalendarLogic(Component, startFromMonday, yearProp, monthProp, dayProp) {
+export function withCalendarLogic(Component, startFromMonday, setDate, yearProp, monthProp, dayProp) {
   return function calendarLogic(props) {
     // console.log(props);
     const [year, setYear] = useState(yearProp);
@@ -39,9 +39,8 @@ export function withCalendarLogic(Component, startFromMonday, yearProp, monthPro
         <Component
           {...props}
           year={year}
-          setYear={setYear}
           month={month}
-          setMonth={setMonth}
+          setDate={setDate}
           fromRange={fromRange}
           setFromRange={setFromRange}
           toRange={toRange}

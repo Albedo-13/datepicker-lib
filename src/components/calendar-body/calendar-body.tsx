@@ -14,9 +14,8 @@ import * as S from "./styles";
 
 export default function CalendarBody({
   year,
-  setYear,
   month,
-  setMonth,
+  setDate,
   fromRange,
   setFromRange,
   toRange,
@@ -44,6 +43,7 @@ export default function CalendarBody({
           <Cell
             key={`${id}-${month}-${year}`}
             date={date}
+            setDate={setDate}
             outside={outside}
             weekend={weekend}
             fromRange={fromRange}

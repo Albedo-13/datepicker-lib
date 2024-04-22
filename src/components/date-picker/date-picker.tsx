@@ -16,11 +16,19 @@ interface DatePickerProps {
 export function DatePicker({ startFromMonday }: DatePickerProps) {
   const [date, setDate] = useState(new Date());
   const { day, month, year } = splitDate(date);
+
   console.log("DatePicker date (public):", date);
 
-  const CalendarWithLogic = withCalendarLogic(Calendar, startFromMonday, year, month, day);
+  const CalendarWithLogic = withCalendarLogic(
+    Calendar,
+    startFromMonday,
+    setDate,
+    year,
+    month,
+    day
+  );
   const CalendarWithInput = withInputLogic(CalendarWithLogic);
-  
+
   return (
     <S.Wrapper>
       <GlobalStyles />

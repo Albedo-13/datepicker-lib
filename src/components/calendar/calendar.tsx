@@ -6,9 +6,8 @@ import * as S from "./styles";
 
 export function Calendar({
   year,
-  setYear,
   month,
-  setMonth,
+  setDate,
   fromRange,
   setFromRange,
   toRange,
@@ -27,9 +26,8 @@ export function Calendar({
       />
       <CalendarBody
         year={year}
-        setYear={setYear}
         month={month}
-        setMonth={setMonth}
+        setDate={setDate}
         fromRange={fromRange}
         setFromRange={setFromRange}
         toRange={toRange}
