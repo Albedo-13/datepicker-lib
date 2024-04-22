@@ -14,19 +14,17 @@ export function Cell({
   toRange,
   setToRange,
 }) {
-  // TODO: basic variable?
-  // TODO: hoist data to hoc
-  // TODO: "to" state to range picker?
-  // TODO: rename from and to => pickedDate and rangeToDate?
   const [cellDate, setCellDate] = useState(date);
   const cellDay = cellDate.getDate();
   const from = isDatesEqual(date, fromRange);
   const to = isDatesEqual(date, toRange);
 
   const handleMouseDownClick = () => {
-    setDate(cellDate);
-    setToRange(cellDate);
-    setFromRange(cellDate);
+    if (!outside) {
+      setDate(cellDate);
+      setToRange(cellDate);
+      setFromRange(cellDate);
+    }
   };
 
   const handleOtherClick = () => {

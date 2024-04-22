@@ -21,16 +21,17 @@ const Cell = styled.div`
     background-color: #2f80ed1a;
     transition: 0.1s all;
   }
-
-  &[data-outside="true"] {
-    color: #aaaaaa;
-  }
-
+  
   &[data-between="true"] {
     color: #2f80ed;
     background-color: #2f80ed1a;
     transition: 0.2s all;
   }
+
+  &[data-outside="true"] {
+    color: #aaaaaa;
+  }
+
 
   &[data-to="true"] {
     color: white;

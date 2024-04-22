@@ -11,8 +11,7 @@ import {
 } from "@/utils/inputUtils";
 
 export function withInputLogic(Component, date, setDate) {
-  return function inputLogic(props) {
-    // console.log(props);
+  return function inputLogic() {
     const [inputText, setInputText] = useState(parseInputDate(date));
     const [isValid, setIsValid] = useState(true);
     const [isCalendarVisible, setIsCalendarVisible] = useState(true);
