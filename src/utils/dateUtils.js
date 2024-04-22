@@ -52,7 +52,7 @@ export const nextDate = (date, value) => {
 };
 
 export const isDayBelongsToMonth = (date, month) =>
-  date.getMonth() !== month - 1;
+  date.getMonth() === month - 1;
 
 export const isDatesEqual = (date1, date2) =>
   date1?.toString() === date2?.toString();
