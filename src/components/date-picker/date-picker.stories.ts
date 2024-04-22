@@ -11,6 +11,7 @@ export default {
 
 export const DefaultDatePicker = {
   args: {
+    value: "19/12/2024",
     startFromMonday: true,
   },
 };

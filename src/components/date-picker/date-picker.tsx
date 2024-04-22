@@ -8,12 +8,12 @@ import { Calendar } from "../calendar/calendar";
 import * as S from "./styles";
 
 interface DatePickerProps {
+  value: string;
   startFromMonday: boolean;
 }
 
 export function DatePicker({ startFromMonday }: DatePickerProps) {
   const CalendarWithLogic = withCalendarLogic(Calendar, startFromMonday);
-
   const CalendarWithInput = withInputLogic(CalendarWithLogic);
   
   return (
