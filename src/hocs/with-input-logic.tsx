@@ -2,19 +2,33 @@ import React, { useState } from "react";
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import { formatValue, transformValue } from "@/utils/inputUtils";
+import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
+import {
+  formatValue,
+  parseInputDate,
+  splitString,
+  transformValue,
+} from "@/utils/inputUtils";
 
-export function withInputLogic(Component) {
+export function withInputLogic(Component, date, setDate) {
   return function inputLogic(props) {
     // console.log(props);
-    const [inputText, setInputText] = useState("");
+    const [inputText, setInputText] = useState(parseInputDate(date));
     const [isValid, setIsValid] = useState(true);
     const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
     const handleInputChange = (e) => {
       const formattedValue = transformValue(formatValue(e.target.value));
+      handleDateChange(formattedValue);
       validateDate(formattedValue);
       setInputText(formattedValue);
+    };
+
+    const handleDateChange = (date) => {
+      if (INPUT_REGEX.test(date)) {
+        const { day, month, year } = splitString(date);
+        setDate(createDateWithTimezoneOffset(year, month, day));
+      }
     };
 
     const handleInputClear = () => {

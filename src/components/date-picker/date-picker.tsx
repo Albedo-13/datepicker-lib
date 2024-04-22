@@ -27,7 +27,7 @@ export function DatePicker({ startFromMonday }: DatePickerProps) {
     month,
     day
   );
-  const CalendarWithInput = withInputLogic(CalendarWithLogic);
+  const CalendarWithInput = withInputLogic(CalendarWithLogic, date, setDate);
 
   return (
     <S.Wrapper>
