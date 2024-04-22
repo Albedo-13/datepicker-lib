@@ -18,7 +18,7 @@ export function Cell({
   // TODO: "to" state to range picker?
   // TODO: rename from and to => pickedDate and rangeToDate?
   const [cellDate, setCellDate] = useState(date);
-  const day = cellDate.getDate();
+  const cellDay = cellDate.getDate();
   const from = isDatesEqual(date, fromRange);
   const to = isDatesEqual(date, toRange);
 
@@ -41,7 +41,7 @@ export function Cell({
       data-to={to}
       data-between={isBetweenDates(date, fromRange, toRange)}
     >
-      {day}
+      {cellDay}
     </S.Cell>
   );
 }

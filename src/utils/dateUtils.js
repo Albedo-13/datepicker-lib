@@ -29,6 +29,12 @@ export const getStartDateFromPreviousMonth = (
   );
 };
 
+// TODO: replace code repeats with this method
+export const createDateWithTimezoneOffset = (year, month, day = 1) => {
+  const offset = getTimezoneOffset(year, month);
+  return new Date(year, month - 1, day, 0, -offset, 0, 0);
+};
+
 export const getWeekdayOfMonthStart = (year, month) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, 1, 0, -offset, 0, 0).getDay();

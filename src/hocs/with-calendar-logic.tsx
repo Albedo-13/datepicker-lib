@@ -2,15 +2,16 @@ import React, { useState } from "react";
 
 import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
 import { WeekdaysItemType } from "@/types/types";
+import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
 
-export function withCalendarLogic(Component, startFromMonday) {
+export function withCalendarLogic(Component, startFromMonday, yearProp, monthProp, dayProp) {
   return function calendarLogic(props) {
     // console.log(props);
-    const [year, setYear] = useState(2024);
-    const [month, setMonth] = useState(12);
+    const [year, setYear] = useState(yearProp);
+    const [month, setMonth] = useState(monthProp);
 
     // const [pickedCell, setPickedCell] = useState(null);
-    const [fromRange, setFromRange] = useState(null);
+    const [fromRange, setFromRange] = useState(createDateWithTimezoneOffset(year, month, dayProp));
     const [toRange, setToRange] = useState(null);
 
     const startWeekday: WeekdaysItemType = startFromMonday
