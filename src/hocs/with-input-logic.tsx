@@ -2,11 +2,10 @@ import React, { useState } from "react";
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
+import { createDateWithTimezoneOffsetFromString } from "@/utils/dateUtils";
 import {
   formatValue,
   parseInputDate,
-  splitString,
   transformValue,
 } from "@/utils/inputUtils";
 
@@ -25,8 +24,7 @@ export function withInputLogic(Component, date, setDate) {
 
     const handleDateChange = (date) => {
       if (INPUT_REGEX.test(date)) {
-        const { day, month, year } = splitString(date);
-        setDate(createDateWithTimezoneOffset(year, month, day));
+        setDate(createDateWithTimezoneOffsetFromString(date));
       }
     };
 

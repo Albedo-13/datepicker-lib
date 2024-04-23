@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { isBetweenDates, isDatesEqual } from "@/utils/dateUtils";
 
@@ -14,21 +14,20 @@ export function Cell({
   toRange,
   setToRange,
 }) {
-  const [cellDate, setCellDate] = useState(date);
-  const cellDay = cellDate.getDate();
+  const cellDay = date.getDate();
   const from = isDatesEqual(date, fromRange);
   const to = isDatesEqual(date, toRange);
 
   const handleMouseDownClick = () => {
     if (!outside) {
-      setDate(cellDate);
-      setToRange(cellDate);
-      setFromRange(cellDate);
+      setDate(date);
+      setToRange(date);
+      setFromRange(date);
     }
   };
 
   const handleOtherClick = () => {
-    setToRange(cellDate);
+    setToRange(date);
   };
 
   return (

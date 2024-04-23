@@ -1,9 +1,8 @@
 import React from "react";
 
-import { CALENDAR_CELLS_SIZE, WEEK_SIZE } from "@/constants/constants";
+import { CALENDAR_CELLS_SIZE } from "@/constants/constants";
 import {
   getStartDateFromPreviousMonth,
-  isDatesEqual,
   isDayBelongsToMonth,
   isWeekendOrHoliday,
   nextDate,

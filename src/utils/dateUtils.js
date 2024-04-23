@@ -1,5 +1,7 @@
 import { holidays } from "@/mocks/holidays";
 
+import { splitString } from "./inputUtils";
+
 export const getDaysFromMonth = (year, month) =>
   new Date(year, month, 0).getDate();
 
@@ -31,6 +33,16 @@ export const getStartDateFromPreviousMonth = (
 
 // TODO: replace code repeats with this method
 export const createDateWithTimezoneOffset = (year, month, day = 1) => {
+  const offset = getTimezoneOffset(year, month);
+  return new Date(year, month - 1, day, 0, -offset, 0, 0);
+};
+
+export const createDateWithTimezoneOffsetFromString = (date) => {
+  if (!date) {
+    return null;
+  }
+  const { day, month, year } = splitString(date);
+  console.log(date, day, month, year);
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };

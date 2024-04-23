@@ -10,7 +10,7 @@ export function Input({
   handleInputChange,
   handleInputClear,
   handleCalendarVisibility,
-  isValid
+  isValid,
 }) {
   return (
     <S.InputWrapper data-valid={isValid}>

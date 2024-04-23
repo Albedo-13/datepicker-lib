@@ -4,13 +4,21 @@ import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
 import { WeekdaysItemType } from "@/types/types";
 import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
 
-export function withCalendarLogic(Component, startFromMonday, setDate, yearProp, monthProp, dayProp) {
+export function withCalendarLogic(
+  Component,
+  startFromMonday,
+  setDate,
+  yearProp,
+  monthProp,
+  dayProp
+) {
   return function calendarLogic() {
     const [year, setYear] = useState(yearProp);
     const [month, setMonth] = useState(monthProp);
 
-    // const [pickedCell, setPickedCell] = useState(null);
-    const [fromRange, setFromRange] = useState(createDateWithTimezoneOffset(year, month, dayProp));
+    const [fromRange, setFromRange] = useState(
+      createDateWithTimezoneOffset(year, month, dayProp)
+    );
     const [toRange, setToRange] = useState(null);
 
     const startWeekday: WeekdaysItemType = startFromMonday
