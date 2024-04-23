@@ -1,4 +1,10 @@
-import React, { useState } from "react";
+import React, {
+  type ChangeEvent,
+  type ComponentType,
+  type Dispatch,
+  type SetStateAction,
+  useState,
+} from "react";
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
@@ -9,22 +15,26 @@ import {
   transformValue,
 } from "@/utils/inputUtils";
 
-export function withInputLogic(Component, date, setDate) {
+export function withInputLogic(
+  Component: ComponentType<unknown>,
+  date: Date,
+  setDate: Dispatch<SetStateAction<Date>>
+) {
   return function inputLogic() {
     const [inputText, setInputText] = useState(parseInputDate(date));
     const [isValid, setIsValid] = useState(true);
     const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
-    const handleInputChange = (e) => {
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
       const formattedValue = transformValue(formatValue(e.target.value));
       handleDateChange(formattedValue);
       validateDate(formattedValue);
       setInputText(formattedValue);
     };
 
-    const handleDateChange = (date) => {
-      if (INPUT_REGEX.test(date)) {
-        setDate(createDateWithTimezoneOffsetFromString(date));
+    const handleDateChange = (value: string) => {
+      if (INPUT_REGEX.test(value)) {
+        setDate(createDateWithTimezoneOffsetFromString(value) as Date);
       }
     };
 
@@ -37,8 +47,10 @@ export function withInputLogic(Component, date, setDate) {
       setIsCalendarVisible((prev) => !prev);
     };
 
-    const validateDate = (value) => {
-      setIsValid(INPUT_REGEX.test(value));
+    const validateDate = (value: string | boolean) => {
+      typeof value === "boolean"
+        ? setIsValid(value)
+        : setIsValid(INPUT_REGEX.test(value));
     };
 
     return (

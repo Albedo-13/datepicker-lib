@@ -1,6 +1,7 @@
 import React from "react";
 
 import { CALENDAR_CELLS_SIZE } from "@/constants/constants";
+import { CalendarBodyType } from "@/types/calendar";
 import {
   getStartDateFromPreviousMonth,
   isDayBelongsToMonth,
@@ -20,7 +21,7 @@ export default function CalendarBody({
   toRange,
   setToRange,
   startWeekday,
-}) {
+}: CalendarBodyType) {
   const startDate = getStartDateFromPreviousMonth(
     year,
     month,

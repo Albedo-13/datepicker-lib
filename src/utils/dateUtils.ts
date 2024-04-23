@@ -2,12 +2,12 @@ import { holidays } from "@/mocks/holidays";
 
 import { splitString } from "./inputUtils";
 
-export const getDaysFromMonth = (year, month) =>
+export const getDaysFromMonth = (year: number, month: number) =>
   new Date(year, month, 0).getDate();
 
 export const getStartDateFromPreviousMonth = (
-  currentYear,
-  currentMonth,
+  currentYear: number,
+  currentMonth: number,
   weekdayOffset = 1
 ) => {
   let weekdayOfCurrentMonthStart = getWeekdayOfMonthStart(
@@ -31,12 +31,12 @@ export const getStartDateFromPreviousMonth = (
   );
 };
 
-export const createDateWithTimezoneOffset = (year, month, day = 1) => {
+export const createDateWithTimezoneOffset = (year: number, month: number, day = 1) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
 
-export const createDateWithTimezoneOffsetFromString = (date) => {
+export const createDateWithTimezoneOffsetFromString = (date: string) => {
   if (!date) return null;
 
   const { day, month, year } = splitString(date);
@@ -44,29 +44,29 @@ export const createDateWithTimezoneOffsetFromString = (date) => {
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
 
-const getWeekdayOfMonthStart = (year, month) => {
+const getWeekdayOfMonthStart = (year: number, month: number) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, 1, 0, -offset, 0, 0).getDay();
 };
 
-const getTimezoneOffset = (year, month) => {
+const getTimezoneOffset = (year: number, month: number) => {
   const date = new Date(year, month, 1, 0, 0, 0, 0);
   return date.getTimezoneOffset();
 };
 
-export const nextDate = (date, value) => {
+export const nextDate = (date: Date, value: number) => {
   const next = new Date(date);
   next.setDate(date.getDate() + value);
   return next;
 };
 
-export const isDayBelongsToMonth = (date, month) =>
+export const isDayBelongsToMonth = (date: Date, month: number) =>
   date.getMonth() === month - 1;
 
-export const isDatesEqual = (date1, date2) =>
+export const isDatesEqual = (date1: Date, date2: Date) =>
   date1?.toString() === date2?.toString();
 
-export const isBetweenDates = (currentDate, dateBorder1, dateBorder2) => {
+export const isBetweenDates = (currentDate: Date, dateBorder1: Date | null, dateBorder2: Date | null) => {
   if (currentDate && dateBorder1 && dateBorder2) {
     const [borderLeft, borderRight] = [dateBorder1, dateBorder2].sort(
       (a, b) => a.getTime() - b.getTime()
@@ -76,15 +76,15 @@ export const isBetweenDates = (currentDate, dateBorder1, dateBorder2) => {
   return false;
 };
 
-const isHoliday = (month, day) => {
+const isHoliday = (month: number, day: number) => {
   return holidays.some(
     (holiday) => holiday.date.month === month && holiday.date.day === day
   );
 };
 
-const isWeekend = (date) => {
+const isWeekend = (date: Date) => {
   return date.getDay() === 6 || date.getDay() === 0;
 };
 
-export const isWeekendOrHoliday = (date) =>
+export const isWeekendOrHoliday = (date: Date) =>
   isWeekend(date) || isHoliday(date.getMonth() + 1, date.getDate());

@@ -1,5 +1,7 @@
 import React from "react";
 
+import type { CalendarBodyType,CalendarHeadType } from "@/types/calendar";
+
 import CalendarBody from "../calendar-body/calendar-body";
 import CalendarHead from "../calendar-head/calendar-head";
 import * as S from "./styles";
@@ -15,7 +17,7 @@ export function Calendar({
   handleMonthChange,
   handleYearChange,
   startWeekday,
-}) {
+} : CalendarHeadType & CalendarBodyType) {
   return (
     <S.CalendarContainer>
       <CalendarHead

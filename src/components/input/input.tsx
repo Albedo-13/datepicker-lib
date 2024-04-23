@@ -2,6 +2,7 @@ import React from "react";
 
 import { ClearSvg } from "@/assets/clear";
 import { DiarySvg } from "@/assets/diary";
+import type { InputType } from "@/types/input";
 
 import * as S from "./styles";
 
@@ -11,7 +12,7 @@ export function Input({
   handleInputClear,
   handleCalendarVisibility,
   isValid,
-}) {
+}: InputType) {
   return (
     <S.InputWrapper data-valid={isValid}>
       <S.InputButtonLeft onClick={handleCalendarVisibility}>

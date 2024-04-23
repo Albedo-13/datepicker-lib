@@ -9,7 +9,7 @@ import {
 
 import { getDaysFromMonth } from "./dateUtils";
 
-export const splitDate = (date) => {
+export const splitDate = (date: Date) => {
   const [day, month, year] = [
     date.getDate(),
     date.getMonth() + 1,
@@ -18,12 +18,12 @@ export const splitDate = (date) => {
   return { day, month, year };
 };
 
-export const splitString = (value) => {
+export const splitString = (value: string) => {
   const [day, month, year] = value.split("/").map((item) => parseInt(item));
   return { day, month, year };
 };
 
-export const formatValue = (text) => {
+export const formatValue = (text: string) => {
   const onlyDigits = text.replace(/\D/g, "");
   let formattedText = onlyDigits.slice(0, 2);
   if (onlyDigits.length > 2) {
@@ -35,10 +35,9 @@ export const formatValue = (text) => {
   return formattedText;
 };
 
-const zeroPrefix = (num) => (num < 10 ? `0${num}` : num);
+const zeroPrefix = (num: number) => (num < 10 ? `0${num}` : num);
 
-// value = 25/07/2001
-export const transformValue = (value) => {
+export const transformValue = (value: string) => {
   let { day, month, year } = splitString(value);
   if (INPUT_REGEX.test(value)) {
     year = Math.max(MIN_YEAR, Math.min(MAX_YEAR, year));
@@ -50,7 +49,7 @@ export const transformValue = (value) => {
   return value;
 };
 
-export const parseInputDate = (value) => {
+export const parseInputDate = (value: Date) => {
   const { day, month, year } = splitDate(value);
   return `${zeroPrefix(day)}/${zeroPrefix(month)}/${year}`;
 };

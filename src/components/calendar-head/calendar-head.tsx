@@ -5,6 +5,7 @@ import { NextSingleSvg } from "@/assets/next-single";
 import { PrevDoubleSvg } from "@/assets/prev-double";
 import { PrevSingleSvg } from "@/assets/prev-single";
 import { MONTHS } from "@/constants/constants";
+import { CalendarHeadType } from "@/types/calendar";
 
 import * as S from "./styles";
 
@@ -13,7 +14,7 @@ export default function CalendarHead({
   month,
   handleMonthChange,
   handleYearChange,
-}) {
+}: CalendarHeadType) {
   return (
     <S.CalendarHead>
       <S.CalendarHeadButtonWrapper>

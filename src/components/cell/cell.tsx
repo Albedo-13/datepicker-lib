@@ -1,5 +1,6 @@
 import React from "react";
 
+import { CalendarCellType } from "@/types/calendar";
 import { isBetweenDates, isDatesEqual } from "@/utils/dateUtils";
 
 import * as S from "./styles";
@@ -13,10 +14,10 @@ export function Cell({
   setFromRange,
   toRange,
   setToRange,
-}) {
+}: CalendarCellType) {
   const cellDay = date.getDate();
-  const from = isDatesEqual(date, fromRange);
-  const to = isDatesEqual(date, toRange);
+  const from = isDatesEqual(date, fromRange as Date);
+  const to = isDatesEqual(date, toRange as Date);
 
   const handleMouseDownClick = () => {
     if (!outside) {

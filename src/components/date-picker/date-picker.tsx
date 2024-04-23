@@ -9,7 +9,7 @@ import { splitDate } from "@/utils/inputUtils";
 import { Calendar } from "../calendar/calendar";
 import * as S from "./styles";
 
-interface DatePickerProps {
+type DatePickerProps = {
   value: string;
   startFromMonday: boolean;
 }

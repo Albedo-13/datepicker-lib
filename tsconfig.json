@@ -21,7 +21,7 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "declaration": true,
     "declarationDir": "dist",
     "baseUrl": ".",
