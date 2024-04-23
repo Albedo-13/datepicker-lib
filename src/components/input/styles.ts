@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 
+import { baseButton } from "@/styles/styles";
+
 const InputWrapper = styled.div`
   position: relative;
   user-select: none;
@@ -12,13 +14,7 @@ const InputWrapper = styled.div`
 `;
 
 const InputButtonLeft = styled.button`
-  border: none;
-  background-color: transparent;
-  background-color: none;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
+  ${baseButton}
   position: absolute;
   left: 0;
   top: 0;
@@ -26,13 +22,7 @@ const InputButtonLeft = styled.button`
 `;
 
 const InputButtonRight = styled.button`
-  border: none;
-  background-color: transparent;
-  background-color: none;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
+  ${baseButton}
   position: absolute;
   right: 0;
   top: 0;

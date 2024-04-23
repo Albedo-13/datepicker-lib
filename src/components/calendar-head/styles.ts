@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 
+import { baseButton } from "@/styles/styles";
+
 const CalendarHead = styled.div`
   display: flex;
   justify-content: space-between;
@@ -12,15 +14,8 @@ const CalendarHeadButtonWrapper = styled.div`
 `;
 
 const CalendarHeadButton = styled.button`
-  border: none;
-  background-color: transparent;
-  background-color: none;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
+  ${baseButton}
   border-radius: 8px;
-  transition: 0.2s all;
   user-select: none;
 
   &:hover {

@@ -31,37 +31,28 @@ export const getStartDateFromPreviousMonth = (
   );
 };
 
-// TODO: replace code repeats with this method
 export const createDateWithTimezoneOffset = (year, month, day = 1) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
 
 export const createDateWithTimezoneOffsetFromString = (date) => {
-  if (!date) {
-    return null;
-  }
+  if (!date) return null;
+
   const { day, month, year } = splitString(date);
-  console.log(date, day, month, year);
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
 
-export const getWeekdayOfMonthStart = (year, month) => {
+const getWeekdayOfMonthStart = (year, month) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, 1, 0, -offset, 0, 0).getDay();
 };
 
-export const getTimezoneOffset = (year, month) => {
+const getTimezoneOffset = (year, month) => {
   const date = new Date(year, month, 1, 0, 0, 0, 0);
   return date.getTimezoneOffset();
 };
-
-export const getDayFromDate = (date) => date.getDate();
-export const getWeekdayFromDate = (date) => date.getDay();
-
-export const getMonthFromDate = (date) => date.getMonth();
-export const monthThumb = (monthName) => monthName.slice(0, 3);
 
 export const nextDate = (date, value) => {
   const next = new Date(date);

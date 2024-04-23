@@ -23,8 +23,6 @@ export const splitString = (value) => {
   return { day, month, year };
 };
 
-export const zeroPrefix = (num) => (num < 10 ? `0${num}` : num);
-
 export const formatValue = (text) => {
   const onlyDigits = text.replace(/\D/g, "");
   let formattedText = onlyDigits.slice(0, 2);
@@ -36,6 +34,8 @@ export const formatValue = (text) => {
   }
   return formattedText;
 };
+
+const zeroPrefix = (num) => (num < 10 ? `0${num}` : num);
 
 // value = 25/07/2001
 export const transformValue = (value) => {
