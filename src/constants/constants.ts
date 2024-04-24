@@ -32,6 +32,10 @@ export const LAST_MONTH = 12;
 
 export const FIRST_DAY = 1;
 
+export const SATURDAY_NUMBER = 6;
+export const SUNDAY_NUMBER = 0;
+export const SUNDAY_NUMBER_AS_7 = 7;
+
 export const MIN_YEAR = 1970;
 export const MAX_YEAR = 2037;
 

@@ -10,9 +10,9 @@ import {
 } from "@/utils/dateUtils";
 
 import { Cell } from "../cell/cell";
-import * as S from "./styles";
+import { CalendarBodyWrapper, WeekdayCell } from "./styles";
 
-export default function CalendarBody({
+export function CalendarBody({
   year,
   month,
   setDate,
@@ -29,10 +29,12 @@ export default function CalendarBody({
   );
 
   return (
-    <S.CalendarBody>
+    <CalendarBodyWrapper>
       {startWeekday.thumbs.map((weekday, id) => {
         return (
-          <S.WeekdayCell key={`${id}-${weekday}`}>{weekday}</S.WeekdayCell>
+          <WeekdayCell key={`${id}-${weekday}`}>
+            {weekday}
+          </WeekdayCell>
         );
       })}
       {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
@@ -53,6 +55,6 @@ export default function CalendarBody({
           />
         );
       })}
-    </S.CalendarBody>
+    </CalendarBodyWrapper>
   );
 }

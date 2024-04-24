@@ -1,19 +1,20 @@
 import { styled } from "styled-components";
 
-import { baseButton } from "@/styles/styles";
+import { variables as v } from "@/styles/_variables";
+import { baseButton, rounded } from "@/styles/styles";
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
+  ${rounded}
   position: relative;
   user-select: none;
-  border-radius: 8px;
-  border: 1px solid #e1e1e1;
+  border: 1px solid ${v.color.grayBorder};
 
   &[data-valid="false"] {
-    border: 1px solid red;
+    border: 1px solid ${v.color.red};
   }
 `;
 
-const InputButtonLeft = styled.button`
+export const InputButtonLeft = styled.button`
   ${baseButton}
   position: absolute;
   left: 0;
@@ -21,7 +22,7 @@ const InputButtonLeft = styled.button`
   bottom: 0;
 `;
 
-const InputButtonRight = styled.button`
+export const InputButtonRight = styled.button`
   ${baseButton}
   position: absolute;
   right: 0;
@@ -29,17 +30,11 @@ const InputButtonRight = styled.button`
   bottom: 0;
 `;
 
-const Input = styled.input`
-  padding: 10px 40px;
-  width: calc(100% - (80px + 2px));
-  font-size: 18px;
+export const InputStyled = styled.input`
+  ${rounded}
+  padding: ${v.spacing.s10} ${v.spacing.s40};
+  width: calc(100% - (${v.spacing.s80} + 2px));
+  font-size: ${v.fontSize.fs18};
   border: none;
   outline: none;
-  border-radius: 8px;
-
-  &::placeholder {
-    color: #bbb;
-  }
 `;
-
-export { Input, InputButtonLeft, InputButtonRight, InputWrapper };

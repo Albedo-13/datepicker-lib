@@ -22,10 +22,12 @@ export function withCalendarLogic(
     const [year, setYear] = useState(yearProp);
     const [month, setMonth] = useState(monthProp);
 
-    const [fromRange, setFromRange] = useState<Date | null>(
+    const [fromRange, setFromRange] = useState<Date>(
       createDateWithTimezoneOffset(year, month, dayProp)
     );
-    const [toRange, setToRange] = useState<Date | null>(null);
+    const [toRange, setToRange] = useState<Date>(
+      createDateWithTimezoneOffset(year, month, dayProp)
+    );
 
     const startWeekday: WeekdaysItemType = startFromMonday
       ? WEEKDAYS.fromMonday

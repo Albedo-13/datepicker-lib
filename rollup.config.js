@@ -31,7 +31,7 @@ const esmPlugins = [
         minimize: !isDev,
       }),
     ],
-  })
+  }),
 ];
 
 if (!isDev) {

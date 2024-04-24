@@ -4,7 +4,12 @@ import { ClearSvg } from "@/assets/clear";
 import { DiarySvg } from "@/assets/diary";
 import type { InputType } from "@/types/input";
 
-import * as S from "./styles";
+import {
+  InputButtonLeft,
+  InputButtonRight,
+  InputStyled,
+  InputWrapper,
+} from "./styles";
 
 export function Input({
   inputText,
@@ -14,19 +19,19 @@ export function Input({
   isValid,
 }: InputType) {
   return (
-    <S.InputWrapper data-valid={isValid}>
-      <S.InputButtonLeft onClick={handleCalendarVisibility}>
+    <InputWrapper data-valid={isValid}>
+      <InputButtonLeft onClick={handleCalendarVisibility}>
         <DiarySvg />
-      </S.InputButtonLeft>
-      <S.Input
+      </InputButtonLeft>
+      <InputStyled
         onChange={handleInputChange}
         value={inputText}
         type="text"
         placeholder="Choose Date"
       />
-      <S.InputButtonRight onClick={handleInputClear}>
+      <InputButtonRight onClick={handleInputClear}>
         <ClearSvg />
-      </S.InputButtonRight>
-    </S.InputWrapper>
+      </InputButtonRight>
+    </InputWrapper>
   );
 }

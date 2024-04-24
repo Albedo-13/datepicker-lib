@@ -1,57 +1,57 @@
 import { styled } from "styled-components";
 
-const Cell = styled.div`
-  padding: 10px;
-  width: 30px;
-  height: 30px;
-  font-weight: 600;
-  font-size: 13px;
-  color: #333;
-  font-size: 18px;
+import { variables as v } from "@/styles/_variables";
+import { rounded } from "@/styles/styles";
+
+export const CellStyled = styled.div`
+  ${rounded}
+  padding: ${v.spacing.s10};
+  width: ${v.spacing.s30};
+  height: ${v.spacing.s30};
+  font-weight: ${v.fontWeight.fw600};
+  color: ${v.color.textDark};
+  font-size: ${v.fontSize.fs18};
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: 8px;
   user-select: none;
   transition: 0.1s all;
 
   &:hover {
-    color: #2f80ed;
-    background-color: #2f80ed1a;
+    color: ${v.color.primary};
+    background-color: ${v.color.primaryA10};
     transition: 0.1s all;
   }
   
   &[data-between="true"] {
-    color: #2f80ed;
-    background-color: #2f80ed1a;
+    color: ${v.color.primary};
+    background-color: ${v.color.primaryA10};
     transition: 0.2s all;
   }
 
   &[data-outside="true"] {
-    color: #aaaaaa;
+    color: ${v.color.textOutranged};
   }
 
 
   &[data-to="true"] {
-    color: white;
-    background-color: #2f80ed99;
+    color: ${v.color.white};
+    background-color: ${v.color.primaryA60};
     transition: 0.2s all;
   }
 
   &[data-from="true"] {
-    color: white;
-    background-color: #2f80ed;
+    color: ${v.color.white};
+    background-color: ${v.color.primary};
     transition: 0.2s all;
   }
 
   &[data-weekend="true"] {
-    color: red;
+    color: ${v.color.red};
   }
 
   &[data-outside="true"][data-weekend="true"] {
-    color: pink;
+    color: ${v.color.pink};
   }
 `;
-
-export { Cell };

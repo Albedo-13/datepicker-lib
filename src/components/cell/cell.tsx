@@ -3,7 +3,7 @@ import React from "react";
 import { CalendarCellType } from "@/types/calendar";
 import { isBetweenDates, isDatesEqual } from "@/utils/dateUtils";
 
-import * as S from "./styles";
+import { CellStyled } from "./styles";
 
 export function Cell({
   date,
@@ -32,7 +32,7 @@ export function Cell({
   };
 
   return (
-    <S.Cell
+    <CellStyled
       onMouseDown={handleMouseDownClick}
       onMouseUp={handleOtherClick}
       data-outside={outside}
@@ -42,6 +42,6 @@ export function Cell({
       data-between={isBetweenDates(date, fromRange, toRange)}
     >
       {cellDay}
-    </S.Cell>
+    </CellStyled>
   );
 }

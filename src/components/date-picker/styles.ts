@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-const Wrapper = styled.div`
-  width: 350px;
-`;
+import { variables as v } from "@/styles/_variables";
 
-export { Wrapper };
+export const Wrapper = styled.div`
+  width: ${v.spacing.s350};
+`;

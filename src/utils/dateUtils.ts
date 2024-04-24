@@ -1,3 +1,8 @@
+import {
+  SATURDAY_NUMBER,
+  SUNDAY_NUMBER,
+  SUNDAY_NUMBER_AS_7,
+} from "@/constants/constants";
 import { holidays } from "@/mocks/holidays";
 
 import { splitString } from "./inputUtils";
@@ -15,7 +20,9 @@ export const getStartDateFromPreviousMonth = (
     currentMonth
   );
   weekdayOfCurrentMonthStart =
-    weekdayOfCurrentMonthStart === 0 ? 7 : weekdayOfCurrentMonthStart;
+    weekdayOfCurrentMonthStart === SUNDAY_NUMBER
+      ? SUNDAY_NUMBER_AS_7
+      : weekdayOfCurrentMonthStart;
   const daysFromMonth = getDaysFromMonth(currentYear, currentMonth - 1);
   const leftDaysFromPreviousMonth =
     daysFromMonth - (daysFromMonth - weekdayOfCurrentMonthStart) - 1;
@@ -31,7 +38,11 @@ export const getStartDateFromPreviousMonth = (
   );
 };
 
-export const createDateWithTimezoneOffset = (year: number, month: number, day = 1) => {
+export const createDateWithTimezoneOffset = (
+  year: number,
+  month: number,
+  day = 1
+) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
@@ -66,7 +77,11 @@ export const isDayBelongsToMonth = (date: Date, month: number) =>
 export const isDatesEqual = (date1: Date, date2: Date) =>
   date1?.toString() === date2?.toString();
 
-export const isBetweenDates = (currentDate: Date, dateBorder1: Date | null, dateBorder2: Date | null) => {
+export const isBetweenDates = (
+  currentDate: Date,
+  dateBorder1?: Date,
+  dateBorder2?: Date
+) => {
   if (currentDate && dateBorder1 && dateBorder2) {
     const [borderLeft, borderRight] = [dateBorder1, dateBorder2].sort(
       (a, b) => a.getTime() - b.getTime()
@@ -83,7 +98,7 @@ const isHoliday = (month: number, day: number) => {
 };
 
 const isWeekend = (date: Date) => {
-  return date.getDay() === 6 || date.getDay() === 0;
+  return date.getDay() === SATURDAY_NUMBER || date.getDay() === SUNDAY_NUMBER;
 };
 
 export const isWeekendOrHoliday = (date: Date) =>

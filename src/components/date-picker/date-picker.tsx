@@ -7,12 +7,12 @@ import { createDateWithTimezoneOffsetFromString } from "@/utils/dateUtils";
 import { splitDate } from "@/utils/inputUtils";
 
 import { Calendar } from "../calendar/calendar";
-import * as S from "./styles";
+import { Wrapper } from "./styles";
 
-type DatePickerProps = {
+interface DatePickerProps {
   value: string;
   startFromMonday: boolean;
-}
+};
 
 export function DatePicker({ value, startFromMonday }: DatePickerProps) {
   const [date, setDate] = useState(
@@ -31,9 +31,9 @@ export function DatePicker({ value, startFromMonday }: DatePickerProps) {
   const CalendarWithInput = withInputLogic(CalendarWithLogic, date, setDate);
 
   return (
-    <S.Wrapper>
+    <Wrapper>
       <GlobalStyles />
       <CalendarWithInput />
-    </S.Wrapper>
+    </Wrapper>
   );
 }

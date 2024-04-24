@@ -1,42 +1,36 @@
 import { styled } from "styled-components";
 
-import { baseButton } from "@/styles/styles";
+import { variables as v } from "@/styles/_variables";
+import { baseButton, rounded } from "@/styles/styles";
 
-const CalendarHead = styled.div`
+export const CalendarHeadWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 10px;
+  padding-top: ${v.spacing.s10};
 `;
 
-const CalendarHeadButtonWrapper = styled.div`
+export const CalendarHeadButtonWrapper = styled.div`
   display: flex;
 `;
 
-const CalendarHeadButton = styled.button`
+export const CalendarHeadButton = styled.button`
   ${baseButton}
-  border-radius: 8px;
+  ${rounded}
   user-select: none;
 
   &:hover {
-    background-color: #00000010;
+    background-color: ${v.color.minorGray};
     transition: 0.2s all;
   }
 
   & > svg {
-    width: 21px;
-    height: 21px;
+    width: ${v.spacing.s20};
+    height: ${v.spacing.s20};
   }
 `;
 
-const CalendarDate = styled.div`
-  font-weight: 700;
-  font-size: 20px;
+export const CalendarDate = styled.div`
+  font-weight: ${v.fontWeight.fw700};
+  font-size: ${v.fontSize.fs20};
 `;
-
-export {
-  CalendarDate,
-  CalendarHead,
-  CalendarHeadButton,
-  CalendarHeadButtonWrapper,
-};

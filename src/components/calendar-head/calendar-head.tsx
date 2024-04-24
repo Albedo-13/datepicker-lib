@@ -7,35 +7,40 @@ import { PrevSingleSvg } from "@/assets/prev-single";
 import { MONTHS } from "@/constants/constants";
 import { CalendarHeadType } from "@/types/calendar";
 
-import * as S from "./styles";
+import {
+  CalendarDate,
+  CalendarHeadButton,
+  CalendarHeadButtonWrapper,
+  CalendarHeadWrapper,
+} from "./styles";
 
-export default function CalendarHead({
+export function CalendarHead({
   year,
   month,
   handleMonthChange,
   handleYearChange,
 }: CalendarHeadType) {
   return (
-    <S.CalendarHead>
-      <S.CalendarHeadButtonWrapper>
-        <S.CalendarHeadButton onClick={handleYearChange(-1)}>
+    <CalendarHeadWrapper>
+      <CalendarHeadButtonWrapper>
+        <CalendarHeadButton onClick={handleYearChange(-1)}>
           <PrevDoubleSvg />
-        </S.CalendarHeadButton>
-        <S.CalendarHeadButton onClick={handleMonthChange(-1)}>
+        </CalendarHeadButton>
+        <CalendarHeadButton onClick={handleMonthChange(-1)}>
           <PrevSingleSvg />
-        </S.CalendarHeadButton>
-      </S.CalendarHeadButtonWrapper>
-      <S.CalendarDate>
+        </CalendarHeadButton>
+      </CalendarHeadButtonWrapper>
+      <CalendarDate>
         {MONTHS[month - 1]} {year}
-      </S.CalendarDate>
-      <S.CalendarHeadButtonWrapper>
-        <S.CalendarHeadButton onClick={handleMonthChange(1)}>
+      </CalendarDate>
+      <CalendarHeadButtonWrapper>
+        <CalendarHeadButton onClick={handleMonthChange(1)}>
           <NextSingleSvg />
-        </S.CalendarHeadButton>
-        <S.CalendarHeadButton onClick={handleYearChange(1)}>
+        </CalendarHeadButton>
+        <CalendarHeadButton onClick={handleYearChange(1)}>
           <NextDoubleSvg />
-        </S.CalendarHeadButton>
-      </S.CalendarHeadButtonWrapper>
-    </S.CalendarHead>
+        </CalendarHeadButton>
+      </CalendarHeadButtonWrapper>
+    </CalendarHeadWrapper>
   );
 }

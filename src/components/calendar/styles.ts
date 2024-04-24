@@ -1,10 +1,11 @@
 import { styled } from "styled-components";
 
-const CalendarContainer = styled.div`
-  width: calc(100% - 2px);
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
-  margin-top: 15px;
-`;
+import { variables as v } from "@/styles/_variables";
+import { rounded } from "@/styles/styles";
 
-export { CalendarContainer };
+export const CalendarContainer = styled.div`
+  ${rounded}
+  width: calc(100% - 2px);
+  border: 1px solid ${v.color.grayBorder};
+  margin-top: ${v.spacing.s15};
+`;

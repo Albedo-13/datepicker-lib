@@ -1,10 +1,10 @@
 import React from "react";
 
-import type { CalendarBodyType,CalendarHeadType } from "@/types/calendar";
+import type { CalendarBodyType, CalendarHeadType } from "@/types/calendar";
 
-import CalendarBody from "../calendar-body/calendar-body";
-import CalendarHead from "../calendar-head/calendar-head";
-import * as S from "./styles";
+import { CalendarBody } from "../calendar-body/calendar-body";
+import { CalendarHead } from "../calendar-head/calendar-head";
+import { CalendarContainer } from "./styles";
 
 export function Calendar({
   year,
@@ -17,9 +17,9 @@ export function Calendar({
   handleMonthChange,
   handleYearChange,
   startWeekday,
-} : CalendarHeadType & CalendarBodyType) {
+}: CalendarHeadType & CalendarBodyType) {
   return (
-    <S.CalendarContainer>
+    <CalendarContainer>
       <CalendarHead
         year={year}
         month={month}
@@ -36,6 +36,6 @@ export function Calendar({
         setToRange={setToRange}
         startWeekday={startWeekday}
       />
-    </S.CalendarContainer>
+    </CalendarContainer>
   );
 }
