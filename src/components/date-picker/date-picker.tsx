@@ -10,7 +10,7 @@ import { Calendar } from "../calendar/calendar";
 import { Wrapper } from "./styles";
 
 interface DatePickerProps {
-  value: string;
+  value?: string;
   maxValue?: string;
   minValue?: string;
   startFromMonday: boolean;
@@ -18,7 +18,6 @@ interface DatePickerProps {
   isWeekendsVisible: boolean;
 }
 
-// TODO: optionated параметры из storybook аргс
 // TODO: Выбор вида календаря (по неделям, месяцам и т.д.);
 
 export function DatePicker({

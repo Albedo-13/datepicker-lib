@@ -45,7 +45,7 @@ export const createDate = (year: number, month: number, day = 1) => {
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
 
-export const createDateFromString = (date: string) => {
+export const createDateFromString = (date?: string) => {
   if (!date) return null;
 
   const { day, month, year } = splitString(date);
