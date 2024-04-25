@@ -4,13 +4,15 @@ import type { CalendarBodyType } from "@/types/calendar";
 
 import { CalendarBodyMonths } from "./calendar-body-months";
 import { CalendarBodyWeeks } from "./calendar-body-weeks";
-import { CalendarBodyWrapper } from "./styles";
+import { CalendarBodyMonthsWrapper, CalendarBodyWeeksWrapper } from "./styles";
 
 export function CalendarBody({
   year,
   month,
-  type,
+  startWeekday,
   setDate,
+  type,
+  setType,
   fromRange,
   setFromRange,
   toRange,
@@ -19,31 +21,42 @@ export function CalendarBody({
   minValue,
   isHolidaysVisible,
   isWeekendsVisible,
-  startWeekday,
 }: CalendarBodyType) {
   return (
-    <CalendarBodyWrapper>
+    <>
       {type === "weeks" && (
-        <CalendarBodyWeeks
-          year={year}
-          month={month}
-          startWeekday={startWeekday}
-          setDate={setDate}
-          fromRange={fromRange}
-          setFromRange={setFromRange}
-          toRange={toRange}
-          setToRange={setToRange}
-          maxValue={maxValue}
-          minValue={minValue}
-          isHolidaysVisible={isHolidaysVisible}
-          isWeekendsVisible={isWeekendsVisible}
-        />
+        <CalendarBodyWeeksWrapper>
+          <CalendarBodyWeeks
+            year={year}
+            month={month}
+            startWeekday={startWeekday}
+            setDate={setDate}
+            fromRange={fromRange}
+            setFromRange={setFromRange}
+            toRange={toRange}
+            setToRange={setToRange}
+            maxValue={maxValue}
+            minValue={minValue}
+            isHolidaysVisible={isHolidaysVisible}
+            isWeekendsVisible={isWeekendsVisible}
+          />
+        </CalendarBodyWeeksWrapper>
       )}
       {type === "months" && (
-        <CalendarBodyMonths
-          
-        />
+        <CalendarBodyMonthsWrapper>
+          <CalendarBodyMonths
+            year={year}
+            setDate={setDate}
+            setType={setType}
+            fromRange={fromRange}
+            setFromRange={setFromRange}
+            toRange={toRange}
+            setToRange={setToRange}
+            maxValue={maxValue}
+            minValue={minValue}
+          />
+        </CalendarBodyMonthsWrapper>
       )}
-    </CalendarBodyWrapper>
+    </>
   );
 }

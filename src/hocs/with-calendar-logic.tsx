@@ -58,7 +58,6 @@ export function withCalendarLogic(
 
     const handleYearChange = (value: number) => () => {
       setYear((prevYear) => prevYear + value);
-      setType("weeks");
     };
 
     const handleCalendarTypeChange = () => {
@@ -67,9 +66,6 @@ export function withCalendarLogic(
           setType("months");
           break;
         case "months":
-          setType("years");
-          break;
-        case "years":
           setType("weeks");
           break;
         default:
@@ -84,6 +80,7 @@ export function withCalendarLogic(
         month={month}
         setDate={setDate}
         type={type}
+        setType={setType}
         fromRange={fromRange}
         setFromRange={setFromRange}
         toRange={toRange}

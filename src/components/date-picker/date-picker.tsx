@@ -19,13 +19,6 @@ interface DatePickerProps {
   isWeekendsVisible: boolean;
 }
 
-// TODO: Выбор вида календаря (по неделям, месяцам и т.д.);
-// TODO: отдельные компоненты для дней, месяцев и лет.
-// TODO: месяцы 12 шт. При клике - меняем setMonth на выбранный.
-// TODO: Переработать компонент cell чтобы сделать его универсальным
-// TODO: кол-во лет считается динамически (от минимума до максимума, мб константы)
-// стили для лет из месяцев. при клике setYear на выбранный месяц
-
 export function DatePicker({
   value,
   maxValue,
@@ -37,6 +30,7 @@ export function DatePicker({
   const [date, setDate] = useState(createDateFromString(value) || new Date());
   const [type, setType] = useState<CalendarType>("weeks");
   const { day, month, year } = splitDate(date);
+  console.log(type);
 
   const CalendarWithLogic = withCalendarLogic(
     Calendar,

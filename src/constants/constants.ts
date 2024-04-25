@@ -13,6 +13,21 @@ export const MONTHS = [
   "December",
 ];
 
+export const MONTHS_SHORT = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
 export const CALENDAR_CELLS_SIZE = 42;
 export const WEEK_SIZE = 7;
 

@@ -10,6 +10,7 @@ export function Calendar({
   year,
   month,
   type,
+  setType,
   setDate,
   fromRange,
   setFromRange,
@@ -38,6 +39,7 @@ export function Calendar({
         year={year}
         month={month}
         type={type}
+        setType={setType}
         setDate={setDate}
         fromRange={fromRange}
         setFromRange={setFromRange}

@@ -8,6 +8,8 @@ import { CellStyled } from "./styles";
 export function Cell({
   date,
   setDate,
+  setType,
+  cellValue,
   outside,
   weekend,
   holiday,
@@ -16,7 +18,6 @@ export function Cell({
   toRange,
   setToRange,
 }: CalendarCellType) {
-  const cellDay = date.getDate();
   const from = isDatesEqual(date, fromRange as Date);
   const to = isDatesEqual(date, toRange as Date);
 
@@ -28,16 +29,19 @@ export function Cell({
     }
   };
 
-  const handleOtherClick = () => {
+  const handleMouseUpClick = () => {
     if (!outside) {
       setToRange(date);
+      if (setType) {
+        setType("weeks");
+      }
     }
   };
 
   return (
     <CellStyled
       onMouseDown={handleMouseDownClick}
-      onMouseUp={handleOtherClick}
+      onMouseUp={handleMouseUpClick}
       data-outside={outside}
       data-weekend={weekend}
       data-holiday={holiday}
@@ -45,7 +49,7 @@ export function Cell({
       data-to={to}
       data-between={isBetweenDates(date, fromRange, toRange)}
     >
-      {cellDay}
+      {cellValue}
     </CellStyled>
   );
 }

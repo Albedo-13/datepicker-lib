@@ -41,6 +41,7 @@ export function CalendarBodyWeeks({
       })}
       {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
         const date = nextDate(startDate, id);
+        const cellValue = date.getDate();
         const outside =
           !isDayBelongsToMonth(date, month) ||
           !isDateBetweenMinMaxDates(date, minValue, maxValue);
@@ -53,6 +54,7 @@ export function CalendarBodyWeeks({
             key={`${id}-${month}-${year}`}
             date={date}
             setDate={setDate}
+            cellValue={cellValue}
             outside={outside}
             weekend={weekend}
             holiday={holiday}
