@@ -33,4 +33,6 @@ export const CalendarHeadButton = styled.button`
 export const CalendarDate = styled.div`
   font-weight: ${v.fontWeight.fw700};
   font-size: ${v.fontSize.fs20};
+  cursor: pointer;
+  user-select: none;
 `;

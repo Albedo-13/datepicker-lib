@@ -6,7 +6,11 @@ import React, {
 } from "react";
 
 import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
-import type { CalendarBodyType, CalendarHeadType } from "@/types/calendar";
+import type {
+  CalendarBodyType,
+  CalendarHeadType,
+  CalendarType,
+} from "@/types/calendar";
 import type { WeekdaysItemType } from "@/types/weekdays";
 import { createDate } from "@/utils/dateUtils";
 
@@ -14,6 +18,8 @@ export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
   startFromMonday: boolean,
   setDate: Dispatch<SetStateAction<Date>>,
+  type: CalendarType,
+  setType: Dispatch<SetStateAction<CalendarType>>,
   yearProp: number,
   monthProp: number,
   dayProp: number,
@@ -47,10 +53,29 @@ export function withCalendarLogic(
       } else {
         setMonth((prevMonth) => prevMonth + value);
       }
+      setType("weeks");
     };
 
     const handleYearChange = (value: number) => () => {
       setYear((prevYear) => prevYear + value);
+      setType("weeks");
+    };
+
+    const handleCalendarTypeChange = () => {
+      switch (type) {
+        case "weeks":
+          setType("months");
+          break;
+        case "months":
+          setType("years");
+          break;
+        case "years":
+          setType("weeks");
+          break;
+        default:
+          setType("weeks");
+          break;
+      }
     };
 
     return (
@@ -58,12 +83,14 @@ export function withCalendarLogic(
         year={year}
         month={month}
         setDate={setDate}
+        type={type}
         fromRange={fromRange}
         setFromRange={setFromRange}
         toRange={toRange}
         setToRange={setToRange}
         handleMonthChange={handleMonthChange}
         handleYearChange={handleYearChange}
+        handleCalendarTypeChange={handleCalendarTypeChange}
         maxValue={maxValue}
         minValue={minValue}
         isHolidaysVisible={isHolidaysVisible}
