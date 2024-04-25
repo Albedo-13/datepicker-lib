@@ -17,10 +17,10 @@ import {
 
 export function withInputLogic(
   Component: ComponentType<unknown>,
-  maxValue: string,
-  minValue: string,
   date: Date,
-  setDate: Dispatch<SetStateAction<Date>>
+  setDate: Dispatch<SetStateAction<Date>>,
+  maxValue?: string,
+  minValue?: string,
 ) {
   return function inputLogic() {
     const [inputText, setInputText] = useState(parseInputDate(date));
@@ -28,7 +28,7 @@ export function withInputLogic(
     const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const formattedValue = transformValue(formatValue(e.target.value));
+      const formattedValue = transformValue(formatValue(e.target.value), minValue, maxValue);
       handleDateChange(formattedValue);
       validateDate(formattedValue);
       setInputText(formattedValue);

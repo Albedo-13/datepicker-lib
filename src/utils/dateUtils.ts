@@ -1,4 +1,6 @@
 import {
+  MAX_DATE_STRING,
+  MIN_DATE_STRING,
   SATURDAY_NUMBER,
   SUNDAY_NUMBER,
   SUNDAY_NUMBER_AS_7,
@@ -72,13 +74,25 @@ export const isDayBelongsToMonth = (date: Date, month: number) =>
 
 export const isDateBetweenMinMaxDates = (
   date: Date,
-  minDateString: string,
-  maxDateString: string
+  minDateString?: string,
+  maxDateString?: string
 ) => {
-  return (
-    date.getTime() >= (createDateFromString(minDateString) as Date).getTime() &&
-    date.getTime() <= (createDateFromString(maxDateString) as Date).getTime()
-  );
+  if (minDateString && maxDateString) {
+    const [minDate, maxDate] = [minDateString, maxDateString].map((date) =>
+      createDateFromString(date)
+    );
+    return (
+      date.getTime() >= (minDate as Date).getTime() &&
+      date.getTime() <= (maxDate as Date).getTime()
+    );
+  } else {
+    return (
+      date.getTime() >=
+        (createDateFromString(MIN_DATE_STRING) as Date).getTime() &&
+      date.getTime() <=
+        (createDateFromString(MAX_DATE_STRING) as Date).getTime()
+    );
+  }
 };
 
 export const isDatesEqual = (date1: Date, date2: Date) =>

@@ -11,15 +11,14 @@ import { Wrapper } from "./styles";
 
 interface DatePickerProps {
   value: string;
-  maxValue: string;
-  minValue: string;
+  maxValue?: string;
+  minValue?: string;
   startFromMonday: boolean;
 }
 
-// TODO: Возможность выбора максимальной даты календаря;
-// TODO: Возможность выбора минимальной даты для календаря;
 // TODO: Возможность скрывать/показывать выходные дни и выделять праздничные дни другим цветом;
 // TODO: Выбор вида календаря (по неделям, месяцам и т.д.);
+// TODO: optionated параметры из storybook аргс
 
 export function DatePicker({
   value,
@@ -32,20 +31,20 @@ export function DatePicker({
 
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
-    maxValue,
-    minValue,
     startFromMonday,
     setDate,
     year,
     month,
-    day
+    day,
+    maxValue,
+    minValue
   );
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,
-    maxValue,
-    minValue,
     date,
-    setDate
+    setDate,
+    maxValue,
+    minValue
   );
 
   return (

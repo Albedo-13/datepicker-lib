@@ -39,4 +39,7 @@ export const SUNDAY_NUMBER_AS_7 = 7;
 export const MIN_YEAR = 1970;
 export const MAX_YEAR = 2037;
 
+export const MIN_DATE_STRING = `01/0${FIRST_MONTH}/${MIN_YEAR}`;
+export const MAX_DATE_STRING = `31/${LAST_MONTH}/${MAX_YEAR}`;
+
 export const INPUT_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;

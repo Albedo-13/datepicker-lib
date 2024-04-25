@@ -12,13 +12,13 @@ import { createDate } from "@/utils/dateUtils";
 
 export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
-  maxValue: string,
-  minValue: string,
   startFromMonday: boolean,
   setDate: Dispatch<SetStateAction<Date>>,
   yearProp: number,
   monthProp: number,
-  dayProp: number
+  dayProp: number,
+  maxValue?: string,
+  minValue?: string
 ) {
   return function calendarLogic() {
     const [year, setYear] = useState(yearProp);
