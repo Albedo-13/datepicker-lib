@@ -8,7 +8,7 @@ import React, {
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import { createDateWithTimezoneOffsetFromString } from "@/utils/dateUtils";
+import { createDateFromString } from "@/utils/dateUtils";
 import {
   formatValue,
   parseInputDate,
@@ -17,6 +17,8 @@ import {
 
 export function withInputLogic(
   Component: ComponentType<unknown>,
+  maxValue: string,
+  minValue: string,
   date: Date,
   setDate: Dispatch<SetStateAction<Date>>
 ) {
@@ -34,7 +36,7 @@ export function withInputLogic(
 
     const handleDateChange = (value: string) => {
       if (INPUT_REGEX.test(value)) {
-        setDate(createDateWithTimezoneOffsetFromString(value) as Date);
+        setDate(createDateFromString(value) as Date);
       }
     };
 

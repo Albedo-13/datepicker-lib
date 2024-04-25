@@ -38,16 +38,12 @@ export const getStartDateFromPreviousMonth = (
   );
 };
 
-export const createDateWithTimezoneOffset = (
-  year: number,
-  month: number,
-  day = 1
-) => {
+export const createDate = (year: number, month: number, day = 1) => {
   const offset = getTimezoneOffset(year, month);
   return new Date(year, month - 1, day, 0, -offset, 0, 0);
 };
 
-export const createDateWithTimezoneOffsetFromString = (date: string) => {
+export const createDateFromString = (date: string) => {
   if (!date) return null;
 
   const { day, month, year } = splitString(date);
@@ -73,6 +69,17 @@ export const nextDate = (date: Date, value: number) => {
 
 export const isDayBelongsToMonth = (date: Date, month: number) =>
   date.getMonth() === month - 1;
+
+export const isDateBetweenMinMaxDates = (
+  date: Date,
+  minDateString: string,
+  maxDateString: string
+) => {
+  return (
+    date.getTime() >= (createDateFromString(minDateString) as Date).getTime() &&
+    date.getTime() <= (createDateFromString(maxDateString) as Date).getTime()
+  );
+};
 
 export const isDatesEqual = (date1: Date, date2: Date) =>
   date1?.toString() === date2?.toString();

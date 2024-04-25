@@ -4,6 +4,7 @@ import { CALENDAR_CELLS_SIZE } from "@/constants/constants";
 import { CalendarBodyType } from "@/types/calendar";
 import {
   getStartDateFromPreviousMonth,
+  isDateBetweenMinMaxDates,
   isDayBelongsToMonth,
   isWeekendOrHoliday,
   nextDate,
@@ -20,6 +21,8 @@ export function CalendarBody({
   setFromRange,
   toRange,
   setToRange,
+  maxValue,
+  minValue,
   startWeekday,
 }: CalendarBodyType) {
   const startDate = getStartDateFromPreviousMonth(
@@ -39,7 +42,7 @@ export function CalendarBody({
       })}
       {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
         const date = nextDate(startDate, id);
-        const outside = !isDayBelongsToMonth(date, month);
+        const outside = !isDayBelongsToMonth(date, month) || !isDateBetweenMinMaxDates(date, minValue, maxValue);
         const weekend = isWeekendOrHoliday(date);
         return (
           <Cell

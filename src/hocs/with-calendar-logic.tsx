@@ -8,10 +8,12 @@ import React, {
 import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
 import type { CalendarBodyType, CalendarHeadType } from "@/types/calendar";
 import type { WeekdaysItemType } from "@/types/weekdays";
-import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
+import { createDate } from "@/utils/dateUtils";
 
 export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
+  maxValue: string,
+  minValue: string,
   startFromMonday: boolean,
   setDate: Dispatch<SetStateAction<Date>>,
   yearProp: number,
@@ -23,10 +25,10 @@ export function withCalendarLogic(
     const [month, setMonth] = useState(monthProp);
 
     const [fromRange, setFromRange] = useState<Date>(
-      createDateWithTimezoneOffset(year, month, dayProp)
+      createDate(year, month, dayProp)
     );
     const [toRange, setToRange] = useState<Date>(
-      createDateWithTimezoneOffset(year, month, dayProp)
+      createDate(year, month, dayProp)
     );
 
     const startWeekday: WeekdaysItemType = startFromMonday
@@ -60,6 +62,8 @@ export function withCalendarLogic(
         setToRange={setToRange}
         handleMonthChange={handleMonthChange}
         handleYearChange={handleYearChange}
+        maxValue={maxValue}
+        minValue={minValue}
         startWeekday={startWeekday}
       />
     );

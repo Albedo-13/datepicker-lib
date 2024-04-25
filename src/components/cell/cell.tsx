@@ -28,7 +28,9 @@ export function Cell({
   };
 
   const handleOtherClick = () => {
-    setToRange(date);
+    if (!outside) {
+      setToRange(date);
+    }
   };
 
   return (

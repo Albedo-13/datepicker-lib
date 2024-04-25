@@ -16,6 +16,8 @@ export function Calendar({
   setToRange,
   handleMonthChange,
   handleYearChange,
+  maxValue,
+  minValue,
   startWeekday,
 }: CalendarHeadType & CalendarBodyType) {
   return (
@@ -34,6 +36,8 @@ export function Calendar({
         setFromRange={setFromRange}
         toRange={toRange}
         setToRange={setToRange}
+        maxValue={maxValue}
+        minValue={minValue}
         startWeekday={startWeekday}
       />
     </CalendarContainer>

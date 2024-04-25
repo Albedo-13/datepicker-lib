@@ -17,6 +17,8 @@ export type CalendarBodyType = {
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;
   setToRange: Dispatch<SetStateAction<Date>>;
+  maxValue: string;
+  minValue: string;
   startWeekday: WeekdaysItemType;
 };
 

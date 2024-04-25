@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ClearSvg } from "@/assets/clear";
+import { ClearSvg } from "@/assets/clear-cross";
 import { DiarySvg } from "@/assets/diary";
 import type { InputType } from "@/types/input";
 

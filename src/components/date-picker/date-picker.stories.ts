@@ -12,6 +12,8 @@ export default {
 export const DefaultDatePicker = {
   args: {
     value: "19/12/2024",
+    maxValue: "10/01/2026",
+    minValue: "20/02/2020",
     startFromMonday: true,
   },
 };
