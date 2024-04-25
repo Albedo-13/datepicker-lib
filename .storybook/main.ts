@@ -24,9 +24,9 @@ const config: StorybookConfig = {
         new TsconfigPathsPlugin({
           extensions: config.resolve.extensions,
         }),
-      ]
+      ];
     }
-    return config
+    return config;
   },
 };
 export default config;
