@@ -10,6 +10,7 @@ export function Cell({
   setDate,
   outside,
   weekend,
+  holiday,
   fromRange,
   setFromRange,
   toRange,
@@ -39,6 +40,7 @@ export function Cell({
       onMouseUp={handleOtherClick}
       data-outside={outside}
       data-weekend={weekend}
+      data-holiday={holiday}
       data-from={from}
       data-to={to}
       data-between={isBetweenDates(date, fromRange, toRange)}

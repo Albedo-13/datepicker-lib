@@ -19,6 +19,8 @@ export type CalendarBodyType = {
   setToRange: Dispatch<SetStateAction<Date>>;
   maxValue?: string;
   minValue?: string;
+  isHolidaysVisible: boolean;
+  isWeekendsVisible: boolean;
   startWeekday: WeekdaysItemType;
 };
 
@@ -27,6 +29,7 @@ export type CalendarCellType = {
   setDate: Dispatch<SetStateAction<Date>>;
   outside: boolean;
   weekend: boolean;
+  holiday: boolean;
   fromRange?: Date;
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;

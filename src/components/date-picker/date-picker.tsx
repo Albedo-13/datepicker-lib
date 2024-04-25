@@ -14,6 +14,8 @@ interface DatePickerProps {
   maxValue?: string;
   minValue?: string;
   startFromMonday: boolean;
+  isHolidaysVisible: boolean;
+  isWeekendsVisible: boolean;
 }
 
 // TODO: Возможность скрывать/показывать выходные дни и выделять праздничные дни другим цветом;
@@ -25,6 +27,8 @@ export function DatePicker({
   maxValue,
   minValue,
   startFromMonday,
+  isHolidaysVisible,
+  isWeekendsVisible,
 }: DatePickerProps) {
   const [date, setDate] = useState(createDateFromString(value) || new Date());
   const { day, month, year } = splitDate(date);
@@ -36,8 +40,10 @@ export function DatePicker({
     year,
     month,
     day,
+    isHolidaysVisible,
+    isWeekendsVisible,
     maxValue,
-    minValue
+    minValue,
   );
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,

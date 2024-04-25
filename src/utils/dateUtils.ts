@@ -112,15 +112,12 @@ export const isBetweenDates = (
   return false;
 };
 
-const isHoliday = (month: number, day: number) => {
+export const isHoliday = (month: number, day: number) => {
   return holidays.some(
     (holiday) => holiday.date.month === month && holiday.date.day === day
   );
 };
 
-const isWeekend = (date: Date) => {
+export const isWeekend = (date: Date) => {
   return date.getDay() === SATURDAY_NUMBER || date.getDay() === SUNDAY_NUMBER;
 };
-
-export const isWeekendOrHoliday = (date: Date) =>
-  isWeekend(date) || isHoliday(date.getMonth() + 1, date.getDate());

@@ -17,6 +17,8 @@ export function withCalendarLogic(
   yearProp: number,
   monthProp: number,
   dayProp: number,
+  isHolidaysVisible: boolean,
+  isWeekendsVisible: boolean,
   maxValue?: string,
   minValue?: string
 ) {
@@ -64,6 +66,8 @@ export function withCalendarLogic(
         handleYearChange={handleYearChange}
         maxValue={maxValue}
         minValue={minValue}
+        isHolidaysVisible={isHolidaysVisible}
+        isWeekendsVisible={isWeekendsVisible}
         startWeekday={startWeekday}
       />
     );

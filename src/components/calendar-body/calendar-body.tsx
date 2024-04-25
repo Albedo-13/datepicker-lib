@@ -6,7 +6,8 @@ import {
   getStartDateFromPreviousMonth,
   isDateBetweenMinMaxDates,
   isDayBelongsToMonth,
-  isWeekendOrHoliday,
+  isHoliday,
+  isWeekend,
   nextDate,
 } from "@/utils/dateUtils";
 
@@ -23,6 +24,8 @@ export function CalendarBody({
   setToRange,
   maxValue,
   minValue,
+  isHolidaysVisible,
+  isWeekendsVisible,
   startWeekday,
 }: CalendarBodyType) {
   const startDate = getStartDateFromPreviousMonth(
@@ -43,7 +46,9 @@ export function CalendarBody({
       {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
         const date = nextDate(startDate, id);
         const outside = !isDayBelongsToMonth(date, month) || !isDateBetweenMinMaxDates(date, minValue, maxValue);
-        const weekend = isWeekendOrHoliday(date);
+        const weekend = isWeekend(date) && isWeekendsVisible;
+        const holiday = isHoliday(date.getMonth() + 1, date.getDate()) && isHolidaysVisible;
+
         return (
           <Cell
             key={`${id}-${month}-${year}`}
@@ -51,6 +56,7 @@ export function CalendarBody({
             setDate={setDate}
             outside={outside}
             weekend={weekend}
+            holiday={holiday}
             fromRange={fromRange}
             setFromRange={setFromRange}
             toRange={toRange}

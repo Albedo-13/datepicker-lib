@@ -15,5 +15,7 @@ export const DefaultDatePicker = {
     maxValue: "10/01/2026",
     minValue: "20/02/2020",
     startFromMonday: true,
+    isHolidaysVisible: true,
+    isWeekendsVisible: true,
   },
 };

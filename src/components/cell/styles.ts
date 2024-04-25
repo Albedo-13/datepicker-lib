@@ -23,7 +23,7 @@ export const CellStyled = styled.div`
     background-color: ${v.color.primaryA10};
     transition: 0.1s all;
   }
-  
+
   &[data-between="true"] {
     color: ${v.color.primary};
     background-color: ${v.color.primaryA10};
@@ -33,7 +33,6 @@ export const CellStyled = styled.div`
   &[data-outside="true"] {
     color: ${v.color.textOutranged};
   }
-
 
   &[data-to="true"] {
     color: ${v.color.white};
@@ -47,11 +46,13 @@ export const CellStyled = styled.div`
     transition: 0.2s all;
   }
 
-  &[data-weekend="true"] {
+  &[data-weekend="true"],
+  &[data-holiday="true"] {
     color: ${v.color.red};
   }
 
-  &[data-outside="true"][data-weekend="true"] {
+  &[data-outside="true"][data-weekend="true"],
+  &[data-outside="true"][data-holiday="true"] {
     color: ${v.color.pink};
   }
 `;

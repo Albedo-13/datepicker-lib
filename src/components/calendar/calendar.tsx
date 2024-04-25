@@ -18,6 +18,8 @@ export function Calendar({
   handleYearChange,
   maxValue,
   minValue,
+  isHolidaysVisible,
+  isWeekendsVisible,
   startWeekday,
 }: CalendarHeadType & CalendarBodyType) {
   return (
@@ -38,6 +40,8 @@ export function Calendar({
         setToRange={setToRange}
         maxValue={maxValue}
         minValue={minValue}
+        isHolidaysVisible={isHolidaysVisible}
+        isWeekendsVisible={isWeekendsVisible}
         startWeekday={startWeekday}
       />
     </CalendarContainer>
