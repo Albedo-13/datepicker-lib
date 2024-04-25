@@ -18,9 +18,8 @@ interface DatePickerProps {
   isWeekendsVisible: boolean;
 }
 
-// TODO: Возможность скрывать/показывать выходные дни и выделять праздничные дни другим цветом;
-// TODO: Выбор вида календаря (по неделям, месяцам и т.д.);
 // TODO: optionated параметры из storybook аргс
+// TODO: Выбор вида календаря (по неделям, месяцам и т.д.);
 
 export function DatePicker({
   value,
