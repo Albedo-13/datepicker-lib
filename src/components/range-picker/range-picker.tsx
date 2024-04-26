@@ -38,10 +38,10 @@ export function RangePicker({
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
     startFromMonday,
-    setFromRange,
     isHolidaysVisible,
     isWeekendsVisible,
     fromRange,
+    setFromRange,
     maxValue,
     minValue,
     toRange,

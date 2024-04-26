@@ -35,14 +35,15 @@ export function DatePicker({
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
     startFromMonday,
-    setFromRange,
     isHolidaysVisible,
     isWeekendsVisible,
     fromRange,
+    setFromRange,
     maxValue,
     minValue
   );
 
+  // TODO: types rework
   // TODO: double setFromRange
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,

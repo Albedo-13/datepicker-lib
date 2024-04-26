@@ -59,6 +59,7 @@ export function withRangeLogic(
       }
     };
 
+    // TODO: make universal handler
     const handleInputClear = () => {
       setInputText("");
       validateDate(true);
@@ -78,6 +79,7 @@ export function withRangeLogic(
       <>
         <Input
           inputText={inputFromText}
+          // TODO: arrow funcs
           handleInputChange={(e) =>
             handleInputChange(e, setInputFromText, setFromRange)
           }
