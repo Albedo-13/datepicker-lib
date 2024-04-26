@@ -14,44 +14,44 @@ interface DatePickerProps {
   value?: string;
   maxValue?: string;
   minValue?: string;
-  startFromMonday: boolean;
-  isHolidaysVisible: boolean;
-  isWeekendsVisible: boolean;
+  startFromMonday?: boolean;
+  isHolidaysVisible?: boolean;
+  isWeekendsVisible?: boolean;
 }
 
 export function DatePicker({
   value,
   maxValue,
   minValue,
-  startFromMonday,
-  isHolidaysVisible,
-  isWeekendsVisible,
+  startFromMonday = true,
+  isHolidaysVisible = true,
+  isWeekendsVisible = true,
 }: DatePickerProps) {
-  const [date, setDate] = useState(createDateFromString(value) || new Date());
-  // TODO: опустить ниже
-  // const { day, month, year } = splitDate(date);
+  // const [date, setDate] = useState(createDateFromString(value) || new Date());
 
-  const [fromRange, setFromRange] = useState<Date>(
-    createDateFromString(value) || new Date()
-  );
+  const [fromRange, setFromRange] = useState<Date>(createDateFromString(value) || new Date());
+  // console.log(date, fromRange);
+
+  const handleDateChange = (value: Date) => {
+    // setDate(value);
+    setFromRange(value);
+  };
 
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
     startFromMonday,
-    setDate,
-    // type,
-    // setType,
+    setFromRange,
     isHolidaysVisible,
     isWeekendsVisible,
     fromRange,
-    setFromRange,
     maxValue,
     minValue
   );
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,
-    date,
-    setDate,
+    fromRange,
+    setFromRange,
+    setFromRange,
     maxValue,
     minValue
   );

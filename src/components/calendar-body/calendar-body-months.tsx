@@ -8,7 +8,6 @@ import { Cell } from "../cell/cell";
 
 export function CalendarBodyMonths({
   year,
-  setDate,
   setType,
   fromRange,
   setFromRange,
@@ -27,7 +26,6 @@ export function CalendarBodyMonths({
           <Cell
             key={`${id}-${monthShort}`}
             date={date}
-            setDate={setDate}
             setType={setType}
             cellValue={monthShort}
             outside={outside}

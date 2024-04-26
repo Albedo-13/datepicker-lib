@@ -10,11 +10,10 @@ export function CalendarBody({
   year,
   month,
   startWeekday,
-  setDate,
+  setFromRange,
   type,
   setType,
   fromRange,
-  setFromRange,
   toRange,
   setToRange,
   maxValue,
@@ -30,7 +29,7 @@ export function CalendarBody({
             year={year}
             month={month}
             startWeekday={startWeekday}
-            setDate={setDate}
+            setDate={setFromRange}
             fromRange={fromRange}
             setFromRange={setFromRange}
             toRange={toRange}
@@ -46,7 +45,6 @@ export function CalendarBody({
         <CalendarBodyMonthsWrapper>
           <CalendarBodyMonths
             year={year}
-            setDate={setDate}
             setType={setType}
             fromRange={fromRange}
             setFromRange={setFromRange}

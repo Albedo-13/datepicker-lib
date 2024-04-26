@@ -17,13 +17,10 @@ import { splitDate } from "@/utils/inputUtils";
 export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
   startFromMonday: boolean,
-  setDate: Dispatch<SetStateAction<Date>>,
-  // type: CalendarType,
-  // setType: Dispatch<SetStateAction<CalendarType>>,
+  setFromRange: Dispatch<SetStateAction<Date>>,
   isHolidaysVisible: boolean,
   isWeekendsVisible: boolean,
   fromRange: Date,
-  setFromRange: Dispatch<SetStateAction<Date>>,
   maxValue?: string,
   minValue?: string,
   toRange?: Date,
@@ -73,11 +70,11 @@ export function withCalendarLogic(
       <Component
         year={year}
         month={month}
-        setDate={setDate}
+        setFromRange={setFromRange}
         type={type}
         setType={setType}
         fromRange={fromRange}
-        setFromRange={setFromRange}
+        // setFromRange={setFromRange}
         toRange={toRange}
         setToRange={setToRange}
         handleMonthChange={handleMonthChange}

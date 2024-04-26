@@ -7,7 +7,6 @@ import { CellStyled } from "./styles";
 
 export function Cell({
   date,
-  setDate,
   setType,
   cellValue,
   outside,
@@ -23,9 +22,8 @@ export function Cell({
 
   const handleMouseDownClick = () => {
     if (!outside) {
-      setDate(date);
-      setToRange ? setToRange(date) : null;
       setFromRange(date);
+      setToRange ? setToRange(date) : null;
     }
   };
 

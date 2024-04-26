@@ -19,6 +19,7 @@ export function withInputLogic(
   Component: ComponentType<unknown>,
   date: Date,
   setDate: Dispatch<SetStateAction<Date>>,
+  setFromRange: Dispatch<SetStateAction<Date>>,
   maxValue?: string,
   minValue?: string,
 ) {
@@ -37,6 +38,7 @@ export function withInputLogic(
     const handleDateChange = (value: string) => {
       if (INPUT_REGEX.test(value)) {
         setDate(createDateFromString(value) as Date);
+        setFromRange(createDateFromString(value) as Date);
       }
     };
 

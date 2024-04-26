@@ -17,7 +17,6 @@ import { WeekdayCell } from "./styles";
 export function CalendarBodyWeeks({
   year,
   month,
-  setDate,
   fromRange,
   setFromRange,
   toRange,
@@ -53,7 +52,6 @@ export function CalendarBodyWeeks({
           <Cell
             key={`${id}-${month}-${year}`}
             date={date}
-            setDate={setDate}
             cellValue={cellValue}
             outside={outside}
             weekend={weekend}
