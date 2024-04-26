@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MONTHS_SHORT } from "@/constants/constants";
+import { FIRST_DAY, MONTHS_SHORT } from "@/constants/constants";
 import type { CalendarBodyMonthsType } from "@/types/calendar";
 import { createDate, isDateBetweenMinMaxDates } from "@/utils/dateUtils";
 
@@ -20,7 +20,7 @@ export function CalendarBodyMonths({
   return (
     <>
       {MONTHS_SHORT.map((monthShort, id) => {
-        const date = createDate(year, id + 1, 1);
+        const date = createDate(year, id + 1, FIRST_DAY);
         const outside = !isDateBetweenMinMaxDates(date, minValue, maxValue);
 
         return (

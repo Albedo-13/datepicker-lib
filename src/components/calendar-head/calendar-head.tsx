@@ -33,8 +33,12 @@ export function CalendarHead({
         </CalendarHeadButton>
       </CalendarHeadButtonWrapper>
       <CalendarDate onClick={handleCalendarTypeChange}>
-        {type === "weeks" && `${MONTHS[month - 1]} ${year}`}
-        {type === "months" && `${year}`}
+        {
+          {
+            weeks: `${MONTHS[month - 1]} ${year}`,
+            months: `${year}`,
+          }[type]
+        }
       </CalendarDate>
       <CalendarHeadButtonWrapper>
         <CalendarHeadButton onClick={handleMonthChange(1)}>

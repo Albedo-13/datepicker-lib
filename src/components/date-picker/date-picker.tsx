@@ -30,7 +30,6 @@ export function DatePicker({
   const [date, setDate] = useState(createDateFromString(value) || new Date());
   const [type, setType] = useState<CalendarType>("weeks");
   const { day, month, year } = splitDate(date);
-  console.log(type);
 
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
