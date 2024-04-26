@@ -17,14 +17,12 @@ import {
 
 export function withRangeLogic(
   Component: ComponentType<unknown>,
-  date: Date,
-  setDate: Dispatch<SetStateAction<Date>>,
+  fromRange: Date,
+  setFromRange: Dispatch<SetStateAction<Date>>,
+  toRange: Date,
+  setToRange: Dispatch<SetStateAction<Date>>,
   maxValue?: string,
-  minValue?: string,
-  fromRange?: Date,
-  setFromRange?: Dispatch<SetStateAction<Date>>,
-  toRange?: Date,
-  setToRange?: Dispatch<SetStateAction<Date>>
+  minValue?: string
 ) {
   return function inputLogic() {
     const [inputFromText, setInputFromText] = useState(
@@ -80,7 +78,9 @@ export function withRangeLogic(
       <>
         <Input
           inputText={inputFromText}
-          handleInputChange={(e) => handleInputChange(e, setInputFromText, setFromRange)}
+          handleInputChange={(e) =>
+            handleInputChange(e, setInputFromText, setFromRange)
+          }
           handleInputClear={handleInputClear}
           handleCalendarVisibility={handleCalendarVisibility}
           isValid={isValid}
@@ -88,7 +88,9 @@ export function withRangeLogic(
         />
         <Input
           inputText={inputToText}
-          handleInputChange={(e) => handleInputChange(e, setInputToText, setToRange)}
+          handleInputChange={(e) =>
+            handleInputChange(e, setInputToText, setToRange)
+          }
           handleInputClear={handleInputClear}
           handleCalendarVisibility={handleCalendarVisibility}
           isValid={isValid}

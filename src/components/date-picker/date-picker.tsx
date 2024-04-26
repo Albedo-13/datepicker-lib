@@ -27,15 +27,10 @@ export function DatePicker({
   isHolidaysVisible = true,
   isWeekendsVisible = true,
 }: DatePickerProps) {
-  // const [date, setDate] = useState(createDateFromString(value) || new Date());
-
-  const [fromRange, setFromRange] = useState<Date>(createDateFromString(value) || new Date());
-  // console.log(date, fromRange);
-
-  const handleDateChange = (value: Date) => {
-    // setDate(value);
-    setFromRange(value);
-  };
+  // TODO: rename const [date, setDate] = useState(createDateFromString(value) || new Date());
+  const [fromRange, setFromRange] = useState<Date>(
+    createDateFromString(value) || new Date()
+  );
 
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
@@ -47,6 +42,8 @@ export function DatePicker({
     maxValue,
     minValue
   );
+
+  // TODO: double setFromRange
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,
     fromRange,

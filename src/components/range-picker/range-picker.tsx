@@ -28,10 +28,6 @@ export function RangePicker({
   isHolidaysVisible,
   isWeekendsVisible,
 }: DatePickerProps) {
-  const [date, setDate] = useState(createDateFromString(value) || new Date());
-  const [type, setType] = useState<CalendarType>("weeks");
-  // const { day, month, year } = splitDate(date);
-
   const [fromRange, setFromRange] = useState<Date>(
     createDateFromString(value) || new Date()
   );
@@ -42,28 +38,24 @@ export function RangePicker({
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
     startFromMonday,
-    setDate,
-    // type,
-    // setType,
+    setFromRange,
     isHolidaysVisible,
     isWeekendsVisible,
     fromRange,
-    setFromRange,
     maxValue,
     minValue,
     toRange,
     setToRange
   );
+
   const CalendarWithRange = withRangeLogic(
     CalendarWithLogic,
-    date,
-    setDate,
-    maxValue,
-    minValue,
     fromRange,
     setFromRange,
     toRange,
-    setToRange
+    setToRange,
+    maxValue,
+    minValue
   );
 
   return (
