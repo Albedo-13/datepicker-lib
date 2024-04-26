@@ -1,14 +1,14 @@
 import type { Meta } from "@storybook/react";
 
-import { DatePicker } from "./date-picker";
+import { RangePicker } from "./range-picker";
 
 export default {
-  title: "MyGroup/DatePicker",
-  component: DatePicker,
+  title: "MyGroup/RangePicker",
+  component: RangePicker,
   tags: ["autodocs"],
-} satisfies Meta<typeof DatePicker>;
+} satisfies Meta<typeof RangePicker>;
 
-export const DefaultDatePicker = {
+export const DefaultRangePicker = {
   args: {
     value: "19/12/2024",
     maxValue: "10/01/2026",

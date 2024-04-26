@@ -22,22 +22,18 @@ export function withCalendarLogic(
   setType: Dispatch<SetStateAction<CalendarType>>,
   yearProp: number,
   monthProp: number,
-  dayProp: number,
   isHolidaysVisible: boolean,
   isWeekendsVisible: boolean,
   maxValue?: string,
-  minValue?: string
+  minValue?: string,
+  fromRange?: Date,
+  setFromRange?: Dispatch<SetStateAction<Date>>,
+  toRange?: Date,
+  setToRange?: Dispatch<SetStateAction<Date>>
 ) {
   return function calendarLogic() {
     const [year, setYear] = useState(yearProp);
     const [month, setMonth] = useState(monthProp);
-
-    const [fromRange, setFromRange] = useState<Date>(
-      createDate(year, month, dayProp)
-    );
-    const [toRange, setToRange] = useState<Date>(
-      createDate(year, month, dayProp)
-    );
 
     const startWeekday: WeekdaysItemType = startFromMonday
       ? WEEKDAYS.fromMonday

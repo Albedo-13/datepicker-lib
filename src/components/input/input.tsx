@@ -17,21 +17,25 @@ export function Input({
   handleInputClear,
   handleCalendarVisibility,
   isValid,
+  labelText,
 }: InputType) {
   return (
-    <InputWrapper data-valid={isValid}>
-      <InputButtonLeft onClick={handleCalendarVisibility}>
-        <DiarySvg />
-      </InputButtonLeft>
-      <InputStyled
-        onChange={handleInputChange}
-        value={inputText}
-        type="text"
-        placeholder="Choose Date"
-      />
-      <InputButtonRight onClick={handleInputClear}>
-        <ClearSvg />
-      </InputButtonRight>
-    </InputWrapper>
+    <>
+      <p>{labelText}</p>
+      <InputWrapper data-valid={isValid}>
+        <InputButtonLeft onClick={handleCalendarVisibility}>
+          <DiarySvg />
+        </InputButtonLeft>
+        <InputStyled
+          onChange={handleInputChange}
+          value={inputText}
+          type="text"
+          placeholder="Choose Date"
+        />
+        <InputButtonRight onClick={handleInputClear}>
+          <ClearSvg />
+        </InputButtonRight>
+      </InputWrapper>
+    </>
   );
 }
