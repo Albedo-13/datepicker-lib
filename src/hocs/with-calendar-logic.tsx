@@ -12,28 +12,27 @@ import type {
   CalendarType,
 } from "@/types/calendar";
 import type { WeekdaysItemType } from "@/types/weekdays";
-import { createDate } from "@/utils/dateUtils";
+import { splitDate } from "@/utils/inputUtils";
 
 export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
   startFromMonday: boolean,
   setDate: Dispatch<SetStateAction<Date>>,
-  type: CalendarType,
-  setType: Dispatch<SetStateAction<CalendarType>>,
-  yearProp: number,
-  monthProp: number,
+  // type: CalendarType,
+  // setType: Dispatch<SetStateAction<CalendarType>>,
   isHolidaysVisible: boolean,
   isWeekendsVisible: boolean,
+  fromRange: Date,
+  setFromRange: Dispatch<SetStateAction<Date>>,
   maxValue?: string,
   minValue?: string,
-  fromRange?: Date,
-  setFromRange?: Dispatch<SetStateAction<Date>>,
   toRange?: Date,
   setToRange?: Dispatch<SetStateAction<Date>>
 ) {
   return function calendarLogic() {
-    const [year, setYear] = useState(yearProp);
-    const [month, setMonth] = useState(monthProp);
+    const [type, setType] = useState<CalendarType>("weeks");
+    const [year, setYear] = useState({ ...splitDate(fromRange) }.year);
+    const [month, setMonth] = useState({ ...splitDate(fromRange) }.month);
 
     const startWeekday: WeekdaysItemType = startFromMonday
       ? WEEKDAYS.fromMonday

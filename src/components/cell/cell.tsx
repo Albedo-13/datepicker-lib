@@ -24,17 +24,15 @@ export function Cell({
   const handleMouseDownClick = () => {
     if (!outside) {
       setDate(date);
-      setToRange(date);
+      setToRange ? setToRange(date) : null;
       setFromRange(date);
     }
   };
 
   const handleMouseUpClick = () => {
     if (!outside) {
-      setToRange(date);
-      if (setType) {
-        setType("weeks");
-      }
+      setToRange ? setToRange(date) : null;
+      setType ? setType("weeks") : null;
     }
   };
 

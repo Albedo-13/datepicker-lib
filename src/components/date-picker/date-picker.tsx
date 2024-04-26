@@ -28,34 +28,26 @@ export function DatePicker({
   isWeekendsVisible,
 }: DatePickerProps) {
   const [date, setDate] = useState(createDateFromString(value) || new Date());
-  const [type, setType] = useState<CalendarType>("weeks");
-  const { day, month, year } = splitDate(date);
+  // TODO: опустить ниже
+  // const { day, month, year } = splitDate(date);
 
-  // TODO: 2) можно убрать свойства и сделать их опциональными. Проверять
   const [fromRange, setFromRange] = useState<Date>(
-    createDate(year, month, day)
+    createDateFromString(value) || new Date()
   );
-  const [toRange, setToRange] = useState<Date>(createDate(year, month, day));
 
   const CalendarWithLogic = withCalendarLogic(
     Calendar,
     startFromMonday,
     setDate,
-    type,
-    setType,
-    year,
-    month,
+    // type,
+    // setType,
     isHolidaysVisible,
     isWeekendsVisible,
-    maxValue,
-    minValue,
     fromRange,
     setFromRange,
-    toRange,
-    setToRange
+    maxValue,
+    minValue
   );
-  // TODO: 1) date === fromRange. Использовать date в календаре, 
-  // опциональные параметры в rangepicker. Используется только в Cell
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,
     date,

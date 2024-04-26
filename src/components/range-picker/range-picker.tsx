@@ -30,7 +30,7 @@ export function RangePicker({
 }: DatePickerProps) {
   const [date, setDate] = useState(createDateFromString(value) || new Date());
   const [type, setType] = useState<CalendarType>("weeks");
-  const { day, month, year } = splitDate(date);
+  // const { day, month, year } = splitDate(date);
 
   const [fromRange, setFromRange] = useState<Date>(
     createDateFromString(value) || new Date()
@@ -43,16 +43,14 @@ export function RangePicker({
     Calendar,
     startFromMonday,
     setDate,
-    type,
-    setType,
-    year,
-    month,
+    // type,
+    // setType,
     isHolidaysVisible,
     isWeekendsVisible,
-    maxValue,
-    minValue,
     fromRange,
     setFromRange,
+    maxValue,
+    minValue,
     toRange,
     setToRange
   );
