@@ -9,6 +9,8 @@ import { CalendarContainer } from "./styles";
 export function Calendar({
   year,
   month,
+  type,
+  setType,
   setDate,
   fromRange,
   setFromRange,
@@ -16,6 +18,11 @@ export function Calendar({
   setToRange,
   handleMonthChange,
   handleYearChange,
+  handleCalendarTypeChange,
+  maxValue,
+  minValue,
+  isHolidaysVisible,
+  isWeekendsVisible,
   startWeekday,
 }: CalendarHeadType & CalendarBodyType) {
   return (
@@ -23,17 +30,25 @@ export function Calendar({
       <CalendarHead
         year={year}
         month={month}
+        type={type}
         handleMonthChange={handleMonthChange}
         handleYearChange={handleYearChange}
+        handleCalendarTypeChange={handleCalendarTypeChange}
       />
       <CalendarBody
         year={year}
         month={month}
+        type={type}
+        setType={setType}
         setDate={setDate}
         fromRange={fromRange}
         setFromRange={setFromRange}
         toRange={toRange}
         setToRange={setToRange}
+        maxValue={maxValue}
+        minValue={minValue}
+        isHolidaysVisible={isHolidaysVisible}
+        isWeekendsVisible={isWeekendsVisible}
         startWeekday={startWeekday}
       />
     </CalendarContainer>

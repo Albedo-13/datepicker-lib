@@ -7,7 +7,7 @@ import {
   MIN_YEAR,
 } from "@/constants/constants";
 
-import { getDaysFromMonth } from "./dateUtils";
+import { createDateFromString, getDaysFromMonth } from "./dateUtils";
 
 export const splitDate = (date: Date) => {
   const [day, month, year] = [
@@ -37,13 +37,44 @@ export const formatValue = (text: string) => {
 
 const zeroPrefix = (num: number) => (num < 10 ? `0${num}` : num);
 
-export const transformValue = (value: string) => {
+const getDataInMinMaxRange = (
+  value: string,
+  minValue: string,
+  maxValue: string
+) => {
+  const date = (createDateFromString(value) as Date).getTime();
+  const minDate = (createDateFromString(minValue) as Date).getTime();
+  const maxDate = (createDateFromString(maxValue) as Date).getTime();
+  if (date >= minDate && date <= maxDate) {
+    return value;
+  } else if (date < minDate) {
+    return minValue;
+  } else if (date > maxDate) {
+    return maxValue;
+  } else {
+    return value;
+  }
+};
+
+const getDataInMinMaxConstants = (value: string) => {
   let { day, month, year } = splitString(value);
+  year = Math.max(MIN_YEAR, Math.min(MAX_YEAR, year));
+  month = Math.max(FIRST_MONTH, Math.min(LAST_MONTH, month));
+  day = Math.max(FIRST_DAY, Math.min(getDaysFromMonth(year, month), day));
+  return `${zeroPrefix(day)}/${zeroPrefix(month)}/${year}`;
+};
+
+export const transformValue = (
+  value: string,
+  minValue?: string,
+  maxValue?: string
+) => {
   if (INPUT_REGEX.test(value)) {
-    year = Math.max(MIN_YEAR, Math.min(MAX_YEAR, year));
-    month = Math.max(FIRST_MONTH, Math.min(LAST_MONTH, month));
-    day = Math.max(FIRST_DAY, Math.min(getDaysFromMonth(year, month), day));
-    return `${zeroPrefix(day)}/${zeroPrefix(month)}/${year}`;
+    if (minValue && maxValue) {
+      return getDataInMinMaxRange(value, minValue, maxValue);
+    } else {
+      return getDataInMinMaxConstants(value);
+    }
   }
 
   return value;

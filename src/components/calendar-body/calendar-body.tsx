@@ -1,60 +1,62 @@
 import React from "react";
 
-import { CALENDAR_CELLS_SIZE } from "@/constants/constants";
-import { CalendarBodyType } from "@/types/calendar";
-import {
-  getStartDateFromPreviousMonth,
-  isDayBelongsToMonth,
-  isWeekendOrHoliday,
-  nextDate,
-} from "@/utils/dateUtils";
+import type { CalendarBodyType } from "@/types/calendar";
 
-import { Cell } from "../cell/cell";
-import { CalendarBodyWrapper, WeekdayCell } from "./styles";
+import { CalendarBodyMonths } from "./calendar-body-months";
+import { CalendarBodyWeeks } from "./calendar-body-weeks";
+import { CalendarBodyMonthsWrapper, CalendarBodyWeeksWrapper } from "./styles";
 
 export function CalendarBody({
   year,
   month,
+  startWeekday,
   setDate,
+  type,
+  setType,
   fromRange,
   setFromRange,
   toRange,
   setToRange,
-  startWeekday,
+  maxValue,
+  minValue,
+  isHolidaysVisible,
+  isWeekendsVisible,
 }: CalendarBodyType) {
-  const startDate = getStartDateFromPreviousMonth(
-    year,
-    month,
-    startWeekday.calendarOffset
-  );
-
   return (
-    <CalendarBodyWrapper>
-      {startWeekday.thumbs.map((weekday, id) => {
-        return (
-          <WeekdayCell key={`${id}-${weekday}`}>
-            {weekday}
-          </WeekdayCell>
-        );
-      })}
-      {Array.from({ length: CALENDAR_CELLS_SIZE }).map((_, id) => {
-        const date = nextDate(startDate, id);
-        const outside = !isDayBelongsToMonth(date, month);
-        const weekend = isWeekendOrHoliday(date);
-        return (
-          <Cell
-            key={`${id}-${month}-${year}`}
-            date={date}
+    <>
+      {type === "weeks" && (
+        <CalendarBodyWeeksWrapper>
+          <CalendarBodyWeeks
+            year={year}
+            month={month}
+            startWeekday={startWeekday}
             setDate={setDate}
-            outside={outside}
-            weekend={weekend}
             fromRange={fromRange}
             setFromRange={setFromRange}
             toRange={toRange}
             setToRange={setToRange}
+            maxValue={maxValue}
+            minValue={minValue}
+            isHolidaysVisible={isHolidaysVisible}
+            isWeekendsVisible={isWeekendsVisible}
           />
-        );
-      })}
-    </CalendarBodyWrapper>
+        </CalendarBodyWeeksWrapper>
+      )}
+      {type === "months" && (
+        <CalendarBodyMonthsWrapper>
+          <CalendarBodyMonths
+            year={year}
+            setDate={setDate}
+            setType={setType}
+            fromRange={fromRange}
+            setFromRange={setFromRange}
+            toRange={toRange}
+            setToRange={setToRange}
+            maxValue={maxValue}
+            minValue={minValue}
+          />
+        </CalendarBodyMonthsWrapper>
+      )}
+    </>
   );
 }

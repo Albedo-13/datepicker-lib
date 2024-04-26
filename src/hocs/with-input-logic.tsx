@@ -8,7 +8,7 @@ import React, {
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import { createDateWithTimezoneOffsetFromString } from "@/utils/dateUtils";
+import { createDateFromString } from "@/utils/dateUtils";
 import {
   formatValue,
   parseInputDate,
@@ -18,7 +18,9 @@ import {
 export function withInputLogic(
   Component: ComponentType<unknown>,
   date: Date,
-  setDate: Dispatch<SetStateAction<Date>>
+  setDate: Dispatch<SetStateAction<Date>>,
+  maxValue?: string,
+  minValue?: string,
 ) {
   return function inputLogic() {
     const [inputText, setInputText] = useState(parseInputDate(date));
@@ -26,7 +28,7 @@ export function withInputLogic(
     const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
     const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const formattedValue = transformValue(formatValue(e.target.value));
+      const formattedValue = transformValue(formatValue(e.target.value), minValue, maxValue);
       handleDateChange(formattedValue);
       validateDate(formattedValue);
       setInputText(formattedValue);
@@ -34,7 +36,7 @@ export function withInputLogic(
 
     const handleDateChange = (value: string) => {
       if (INPUT_REGEX.test(value)) {
-        setDate(createDateWithTimezoneOffsetFromString(value) as Date);
+        setDate(createDateFromString(value) as Date);
       }
     };
 

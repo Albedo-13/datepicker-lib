@@ -6,27 +6,37 @@ import React, {
 } from "react";
 
 import { FIRST_MONTH, LAST_MONTH, WEEKDAYS } from "@/constants/constants";
-import type { CalendarBodyType, CalendarHeadType } from "@/types/calendar";
+import type {
+  CalendarBodyType,
+  CalendarHeadType,
+  CalendarType,
+} from "@/types/calendar";
 import type { WeekdaysItemType } from "@/types/weekdays";
-import { createDateWithTimezoneOffset } from "@/utils/dateUtils";
+import { createDate } from "@/utils/dateUtils";
 
 export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
   startFromMonday: boolean,
   setDate: Dispatch<SetStateAction<Date>>,
+  type: CalendarType,
+  setType: Dispatch<SetStateAction<CalendarType>>,
   yearProp: number,
   monthProp: number,
-  dayProp: number
+  dayProp: number,
+  isHolidaysVisible: boolean,
+  isWeekendsVisible: boolean,
+  maxValue?: string,
+  minValue?: string
 ) {
   return function calendarLogic() {
     const [year, setYear] = useState(yearProp);
     const [month, setMonth] = useState(monthProp);
 
     const [fromRange, setFromRange] = useState<Date>(
-      createDateWithTimezoneOffset(year, month, dayProp)
+      createDate(year, month, dayProp)
     );
     const [toRange, setToRange] = useState<Date>(
-      createDateWithTimezoneOffset(year, month, dayProp)
+      createDate(year, month, dayProp)
     );
 
     const startWeekday: WeekdaysItemType = startFromMonday
@@ -43,10 +53,25 @@ export function withCalendarLogic(
       } else {
         setMonth((prevMonth) => prevMonth + value);
       }
+      setType("weeks");
     };
 
     const handleYearChange = (value: number) => () => {
       setYear((prevYear) => prevYear + value);
+    };
+
+    const handleCalendarTypeChange = () => {
+      switch (type) {
+        case "weeks":
+          setType("months");
+          break;
+        case "months":
+          setType("weeks");
+          break;
+        default:
+          setType("weeks");
+          break;
+      }
     };
 
     return (
@@ -54,12 +79,19 @@ export function withCalendarLogic(
         year={year}
         month={month}
         setDate={setDate}
+        type={type}
+        setType={setType}
         fromRange={fromRange}
         setFromRange={setFromRange}
         toRange={toRange}
         setToRange={setToRange}
         handleMonthChange={handleMonthChange}
         handleYearChange={handleYearChange}
+        handleCalendarTypeChange={handleCalendarTypeChange}
+        maxValue={maxValue}
+        minValue={minValue}
+        isHolidaysVisible={isHolidaysVisible}
+        isWeekendsVisible={isWeekendsVisible}
         startWeekday={startWeekday}
       />
     );

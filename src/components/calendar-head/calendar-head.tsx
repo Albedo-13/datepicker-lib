@@ -5,7 +5,7 @@ import { NextSingleSvg } from "@/assets/next-single";
 import { PrevDoubleSvg } from "@/assets/prev-double";
 import { PrevSingleSvg } from "@/assets/prev-single";
 import { MONTHS } from "@/constants/constants";
-import { CalendarHeadType } from "@/types/calendar";
+import type { CalendarHeadType } from "@/types/calendar";
 
 import {
   CalendarDate,
@@ -17,8 +17,10 @@ import {
 export function CalendarHead({
   year,
   month,
+  type,
   handleMonthChange,
   handleYearChange,
+  handleCalendarTypeChange,
 }: CalendarHeadType) {
   return (
     <CalendarHeadWrapper>
@@ -30,8 +32,13 @@ export function CalendarHead({
           <PrevSingleSvg />
         </CalendarHeadButton>
       </CalendarHeadButtonWrapper>
-      <CalendarDate>
-        {MONTHS[month - 1]} {year}
+      <CalendarDate onClick={handleCalendarTypeChange}>
+        {
+          {
+            weeks: `${MONTHS[month - 1]} ${year}`,
+            months: `${year}`,
+          }[type]
+        }
       </CalendarDate>
       <CalendarHeadButtonWrapper>
         <CalendarHeadButton onClick={handleMonthChange(1)}>
