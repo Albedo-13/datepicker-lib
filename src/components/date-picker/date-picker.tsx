@@ -3,9 +3,7 @@ import React, { useState } from "react";
 import { withCalendarLogic } from "@/hocs/with-calendar-logic";
 import { withInputLogic } from "@/hocs/with-input-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
-import type { CalendarType } from "@/types/calendar";
-import { createDate, createDateFromString } from "@/utils/dateUtils";
-import { splitDate } from "@/utils/inputUtils";
+import { createDateFromString } from "@/utils/dateUtils";
 
 import { Calendar } from "../calendar/calendar";
 import { Wrapper } from "./styles";
@@ -27,8 +25,7 @@ export function DatePicker({
   isHolidaysVisible = true,
   isWeekendsVisible = true,
 }: DatePickerProps) {
-  // TODO: rename const [date, setDate] = useState(createDateFromString(value) || new Date());
-  const [fromRange, setFromRange] = useState<Date>(
+  const [date, setDate] = useState<Date>(
     createDateFromString(value) || new Date()
   );
 
@@ -37,19 +34,16 @@ export function DatePicker({
     startFromMonday,
     isHolidaysVisible,
     isWeekendsVisible,
-    fromRange,
-    setFromRange,
+    date,
+    setDate,
     maxValue,
     minValue
   );
 
-  // TODO: types rework
-  // TODO: double setFromRange
   const CalendarWithInput = withInputLogic(
     CalendarWithLogic,
-    fromRange,
-    setFromRange,
-    setFromRange,
+    date,
+    setDate,
     maxValue,
     minValue
   );

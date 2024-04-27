@@ -7,6 +7,7 @@ import type { InputType } from "@/types/input";
 import {
   InputButtonLeft,
   InputButtonRight,
+  InputLabel,
   InputStyled,
   InputWrapper,
 } from "./styles";
@@ -21,7 +22,7 @@ export function Input({
 }: InputType) {
   return (
     <>
-      <p>{labelText}</p>
+      {labelText && <InputLabel>{labelText}</InputLabel>}
       <InputWrapper data-valid={isValid}>
         <InputButtonLeft onClick={handleCalendarVisibility}>
           <DiarySvg />

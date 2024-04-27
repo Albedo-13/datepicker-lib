@@ -38,3 +38,9 @@ export const InputStyled = styled.input`
   border: none;
   outline: none;
 `;
+
+export const InputLabel = styled.p`
+  font-size: ${v.fontSize.fs18};
+  margin: 0;
+  margin-top: ${v.spacing.s10};
+`;

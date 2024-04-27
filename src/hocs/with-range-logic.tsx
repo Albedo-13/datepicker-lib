@@ -35,20 +35,21 @@ export function withRangeLogic(
     const [isValid, setIsValid] = useState(true);
     const [isCalendarVisible, setIsCalendarVisible] = useState(true);
 
-    const handleInputChange = (
-      e: ChangeEvent<HTMLInputElement>,
-      setterInput: Dispatch<SetStateAction<string>>,
-      setterRange: Dispatch<SetStateAction<Date>>
-    ) => {
-      const formattedValue = transformValue(
-        formatValue(e.target.value),
-        minValue,
-        maxValue
-      );
-      handleDateChange(formattedValue, setterRange);
-      validateDate(formattedValue);
-      setterInput(formattedValue);
-    };
+    const handleInputChange =
+      (
+        setterInput: Dispatch<SetStateAction<string>>,
+        setterRange: Dispatch<SetStateAction<Date>>
+      ) =>
+      (e: ChangeEvent<HTMLInputElement>) => {
+        const formattedValue = transformValue(
+          formatValue(e.target.value),
+          minValue,
+          maxValue
+        );
+        handleDateChange(formattedValue, setterRange);
+        validateDate(formattedValue);
+        setterInput(formattedValue);
+      };
 
     const handleDateChange = (
       value: string,
@@ -59,11 +60,11 @@ export function withRangeLogic(
       }
     };
 
-    // TODO: make universal handler
-    const handleInputClear = () => {
-      setInputText("");
-      validateDate(true);
-    };
+    const handleInputClear =
+      (setterInput: Dispatch<SetStateAction<string>>) => () => {
+        setterInput("");
+        validateDate(true);
+      };
 
     const handleCalendarVisibility = () => {
       setIsCalendarVisible((prev) => !prev);
@@ -79,21 +80,16 @@ export function withRangeLogic(
       <>
         <Input
           inputText={inputFromText}
-          // TODO: arrow funcs
-          handleInputChange={(e) =>
-            handleInputChange(e, setInputFromText, setFromRange)
-          }
-          handleInputClear={handleInputClear}
+          handleInputChange={handleInputChange(setInputFromText, setFromRange)}
+          handleInputClear={handleInputClear(setInputFromText)}
           handleCalendarVisibility={handleCalendarVisibility}
           isValid={isValid}
           labelText={"From:"}
         />
         <Input
           inputText={inputToText}
-          handleInputChange={(e) =>
-            handleInputChange(e, setInputToText, setToRange)
-          }
-          handleInputClear={handleInputClear}
+          handleInputChange={handleInputChange(setInputToText, setToRange)}
+          handleInputClear={handleInputClear(setInputToText)}
           handleCalendarVisibility={handleCalendarVisibility}
           isValid={isValid}
           labelText={"To:"}

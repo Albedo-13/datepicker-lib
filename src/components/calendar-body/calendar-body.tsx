@@ -29,7 +29,6 @@ export function CalendarBody({
             year={year}
             month={month}
             startWeekday={startWeekday}
-            setDate={setFromRange}
             fromRange={fromRange}
             setFromRange={setFromRange}
             toRange={toRange}
