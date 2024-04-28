@@ -1,13 +1,12 @@
 import React from "react";
 
 import { CalendarCellType } from "@/types/calendar";
-import { isBetweenDates, isDatesEqual } from "@/utils/dateUtils";
+import { isBetweenDates, isDatesEqual } from "@/utils";
 
 import { CellStyled } from "./styles";
 
 export function Cell({
   date,
-  setDate,
   setType,
   cellValue,
   outside,
@@ -23,18 +22,15 @@ export function Cell({
 
   const handleMouseDownClick = () => {
     if (!outside) {
-      setDate(date);
-      setToRange(date);
       setFromRange(date);
+      setToRange?.(date)
     }
   };
 
   const handleMouseUpClick = () => {
     if (!outside) {
-      setToRange(date);
-      if (setType) {
-        setType("weeks");
-      }
+      setToRange?.(date)
+      setType ? setType("weeks") : null;
     }
   };
 

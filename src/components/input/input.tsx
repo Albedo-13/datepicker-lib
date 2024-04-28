@@ -7,6 +7,7 @@ import type { InputType } from "@/types/input";
 import {
   InputButtonLeft,
   InputButtonRight,
+  InputLabel,
   InputStyled,
   InputWrapper,
 } from "./styles";
@@ -17,21 +18,25 @@ export function Input({
   handleInputClear,
   handleCalendarVisibility,
   isValid,
+  labelText,
 }: InputType) {
   return (
-    <InputWrapper data-valid={isValid}>
-      <InputButtonLeft onClick={handleCalendarVisibility}>
-        <DiarySvg />
-      </InputButtonLeft>
-      <InputStyled
-        onChange={handleInputChange}
-        value={inputText}
-        type="text"
-        placeholder="Choose Date"
-      />
-      <InputButtonRight onClick={handleInputClear}>
-        <ClearSvg />
-      </InputButtonRight>
-    </InputWrapper>
+    <>
+      {labelText && <InputLabel>{labelText}</InputLabel>}
+      <InputWrapper data-valid={isValid}>
+        <InputButtonLeft onClick={handleCalendarVisibility}>
+          <DiarySvg />
+        </InputButtonLeft>
+        <InputStyled
+          onChange={handleInputChange}
+          value={inputText}
+          type="text"
+          placeholder="Choose Date"
+        />
+        <InputButtonRight onClick={handleInputClear}>
+          <ClearSvg />
+        </InputButtonRight>
+      </InputWrapper>
+    </>
   );
 }

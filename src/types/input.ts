@@ -6,4 +6,5 @@ export type InputType = {
   handleInputClear: VoidFunction;
   handleCalendarVisibility: VoidFunction;
   isValid: boolean;
+  labelText?: string;
 };

@@ -18,11 +18,10 @@ export type CalendarBodyType = {
   month: number;
   type: CalendarType;
   setType: Dispatch<SetStateAction<CalendarType>>;
-  setDate: Dispatch<SetStateAction<Date>>;
   fromRange?: Date;
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;
-  setToRange: Dispatch<SetStateAction<Date>>;
+  setToRange?: Dispatch<SetStateAction<Date>>;
   maxValue?: string;
   minValue?: string;
   isHolidaysVisible: boolean;
@@ -34,19 +33,17 @@ export type CalendarBodyWeeksType = Omit<CalendarBodyType, "type" | "setType">;
 
 export type CalendarBodyMonthsType = {
   year: number;
-  setDate: Dispatch<SetStateAction<Date>>;
   setType: Dispatch<SetStateAction<CalendarType>>;
   fromRange?: Date;
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;
-  setToRange: Dispatch<SetStateAction<Date>>;
+  setToRange?: Dispatch<SetStateAction<Date>>;
   maxValue?: string;
   minValue?: string;
 };
 
 export type CalendarCellType = {
   date: Date;
-  setDate: Dispatch<SetStateAction<Date>>;
   setType?: Dispatch<SetStateAction<CalendarType>>;
   cellValue: number | string;
   outside: boolean;
@@ -55,5 +52,5 @@ export type CalendarCellType = {
   fromRange?: Date;
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;
-  setToRange: Dispatch<SetStateAction<Date>>;
+  setToRange?: Dispatch<SetStateAction<Date>>;
 };
