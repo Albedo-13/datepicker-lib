@@ -2,7 +2,7 @@ import React from "react";
 
 import { FIRST_DAY, MONTHS_SHORT } from "@/constants/constants";
 import type { CalendarBodyMonthsType } from "@/types/calendar";
-import { createDate, isDateBetweenMinMaxDates } from "@/utils/dateUtils";
+import { createDate, isDateBetweenMinMaxDates } from "@/utils";
 
 import { Cell } from "../cell/cell";
 

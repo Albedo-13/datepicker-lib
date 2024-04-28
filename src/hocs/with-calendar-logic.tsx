@@ -12,7 +12,7 @@ import type {
   CalendarType,
 } from "@/types/calendar";
 import type { WeekdaysItemType } from "@/types/weekdays";
-import { splitDate } from "@/utils/inputUtils";
+import { splitDate } from "@/utils";
 
 export function withCalendarLogic(
   Component: ComponentType<CalendarBodyType & CalendarHeadType>,
@@ -28,8 +28,8 @@ export function withCalendarLogic(
 ) {
   return function calendarLogic() {
     const [type, setType] = useState<CalendarType>("weeks");
-    const [year, setYear] = useState({ ...splitDate(fromRange) }.year);
-    const [month, setMonth] = useState({ ...splitDate(fromRange) }.month);
+    const [year, setYear] = useState(splitDate(fromRange).year);
+    const [month, setMonth] = useState(splitDate(fromRange).month);
 
     const startWeekday: WeekdaysItemType = startFromMonday
       ? WEEKDAYS.fromMonday

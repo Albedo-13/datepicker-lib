@@ -9,7 +9,7 @@ import {
   isHoliday,
   isWeekend,
   nextDate,
-} from "@/utils/dateUtils";
+} from "@/utils";
 
 import { Cell } from "../cell/cell";
 import { WeekdayCell } from "./styles";

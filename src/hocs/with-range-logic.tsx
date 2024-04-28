@@ -8,12 +8,12 @@ import React, {
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import { createDateFromString } from "@/utils/dateUtils";
 import {
   formatValue,
   parseInputDate,
   transformValue,
-} from "@/utils/inputUtils";
+} from "@/utils";
+import { createDateFromString } from "@/utils";
 
 export function withRangeLogic(
   Component: ComponentType<unknown>,
@@ -24,7 +24,7 @@ export function withRangeLogic(
   maxValue?: string,
   minValue?: string
 ) {
-  return function inputLogic() {
+  return function rangeLogic() {
     const [inputFromText, setInputFromText] = useState(
       parseInputDate(fromRange as Date)
     );

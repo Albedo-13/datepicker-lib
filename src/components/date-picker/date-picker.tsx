@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { withCalendarLogic } from "@/hocs/with-calendar-logic";
 import { withInputLogic } from "@/hocs/with-input-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
-import { createDateFromString } from "@/utils/dateUtils";
+import { createDateFromString } from "@/utils";
 
 import { Calendar } from "../calendar/calendar";
 import { Wrapper } from "./styles";

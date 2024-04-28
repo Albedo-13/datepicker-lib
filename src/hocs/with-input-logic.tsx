@@ -8,12 +8,12 @@ import React, {
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import { createDateFromString } from "@/utils/dateUtils";
 import {
   formatValue,
   parseInputDate,
   transformValue,
-} from "@/utils/inputUtils";
+} from "@/utils";
+import { createDateFromString } from "@/utils";
 
 export function withInputLogic(
   Component: ComponentType<unknown>,
