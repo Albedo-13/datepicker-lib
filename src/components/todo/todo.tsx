@@ -3,6 +3,15 @@ import React from "react";
 import { TodoProps } from "@/types/todo";
 import { isDatesEqual } from "@/utils";
 
+import {
+  TodoAddButton,
+  TodoInput,
+  TodoInputWrapper,
+  TodoItem,
+  TodoItemRemoveButton,
+  TodoWrapper,
+} from "./styles";
+
 export default function Todo({
   inputText,
   handleInputChange,
@@ -12,22 +21,29 @@ export default function Todo({
   date,
 }: TodoProps) {
   return (
-    <div>
-      <input
-        value={inputText}
-        onChange={handleInputChange}
-        type="text"
-        placeholder="Add Todo"
-      />
-      <button onClick={handleAddTodo}>add todo</button>
+    <TodoWrapper>
+      <TodoInputWrapper>
+        <TodoInput
+          value={inputText}
+          onChange={handleInputChange}
+          type="text"
+          placeholder="Add Todo"
+        />
+        <TodoAddButton onClick={handleAddTodo}>Add</TodoAddButton>
+      </TodoInputWrapper>
       {todos
         .filter((todo) => isDatesEqual(new Date(todo.date), date))
         .map((todo) => (
-          <div key={todo.id}>
+          <TodoItem key={todo.id}>
             {todo.text}
-            <button onClick={handleRemoveTodo(todo.id)}>remove</button>
-          </div>
+            <TodoItemRemoveButton
+              onClick={handleRemoveTodo(todo.id)}
+              aria-label="remove"
+            >
+              ✕
+            </TodoItemRemoveButton>
+          </TodoItem>
         ))}
-    </div>
+    </TodoWrapper>
   );
 }

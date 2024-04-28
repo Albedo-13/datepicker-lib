@@ -18,6 +18,7 @@ export function withTodoLogic(Component: ComponentType<unknown>, date: Date) {
     };
 
     const handleAddTodo = () => {
+      if (!inputText) return;
       const newTodos = [
         ...getLocalStorageTodos(),
         { id: Date.now(), text: inputText, date: date },
