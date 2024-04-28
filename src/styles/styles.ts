@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 
 import { variables } from "@/styles/_variables";
 
@@ -13,7 +13,10 @@ export const baseButton = css`
   transition: 0.2s all;
 `;
 
-
 export const rounded = css`
   border-radius: 8px;
+`;
+
+export const Wrapper = styled.div`
+  width: ${variables.spacing.s350};
 `;

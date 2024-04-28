@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import { withCalendarLogic } from "@/hocs/with-calendar-logic";
-import { withRangeLogic } from "@/hocs/with-range-logic";
+import { withInputLogic } from "@/hocs/with-input-logic";
+import { withTodoLogic } from "@/hocs/with-todo-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
 import { Wrapper } from "@/styles/styles";
 import { DatePickerProps } from "@/types/date-picker-props";
@@ -9,7 +10,7 @@ import { createDateFromString } from "@/utils";
 
 import { Calendar } from "../calendar/calendar";
 
-export function RangePicker({
+export function TodoPicker({
   value,
   maxValue,
   minValue,
@@ -17,10 +18,7 @@ export function RangePicker({
   isHolidaysVisible = true,
   isWeekendsVisible = true,
 }: DatePickerProps) {
-  const [fromRange, setFromRange] = useState<Date>(
-    createDateFromString(value) || new Date()
-  );
-  const [toRange, setToRange] = useState<Date>(
+  const [date, setDate] = useState<Date>(
     createDateFromString(value) || new Date()
   );
 
@@ -29,28 +27,29 @@ export function RangePicker({
     startFromMonday,
     isHolidaysVisible,
     isWeekendsVisible,
-    fromRange,
-    setFromRange,
-    maxValue,
-    minValue,
-    toRange,
-    setToRange
-  );
-
-  const CalendarWithRange = withRangeLogic(
-    CalendarWithLogic,
-    fromRange,
-    setFromRange,
-    toRange,
-    setToRange,
+    date,
+    setDate,
     maxValue,
     minValue
+  );
+
+  const CalendarWithInput = withInputLogic(
+    CalendarWithLogic,
+    date,
+    setDate,
+    maxValue,
+    minValue
+  );
+
+  const CalendarWithTodo = withTodoLogic(
+    CalendarWithInput,
+    date
   );
 
   return (
     <Wrapper>
       <GlobalStyles />
-      <CalendarWithRange />
+      <CalendarWithTodo />
     </Wrapper>
   );
 }
