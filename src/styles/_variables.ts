@@ -12,6 +12,7 @@ export const variables = {
     red: "#ff0000",
   },
   spacing: {
+    s5: "5px",
     s10: "10px",
     s15: "15px",
     s20: "20px",

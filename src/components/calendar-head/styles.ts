@@ -17,7 +17,6 @@ export const CalendarHeadButtonWrapper = styled.div`
 export const CalendarHeadButton = styled.button`
   ${baseButton}
   ${rounded}
-  user-select: none;
 
   &:hover {
     background-color: ${variables.color.minorGray};

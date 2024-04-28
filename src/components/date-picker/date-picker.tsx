@@ -3,19 +3,11 @@ import React, { useState } from "react";
 import { withCalendarLogic } from "@/hocs/with-calendar-logic";
 import { withInputLogic } from "@/hocs/with-input-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
+import { Wrapper } from "@/styles/styles";
+import { DatePickerProps } from "@/types/date-picker-props";
 import { createDateFromString } from "@/utils";
 
 import { Calendar } from "../calendar/calendar";
-import { Wrapper } from "./styles";
-
-interface DatePickerProps {
-  value?: string;
-  maxValue?: string;
-  minValue?: string;
-  startFromMonday?: boolean;
-  isHolidaysVisible?: boolean;
-  isWeekendsVisible?: boolean;
-}
 
 export function DatePicker({
   value,
