@@ -8,11 +8,7 @@ import React, {
 
 import { Input } from "@/components/input/input";
 import { INPUT_REGEX } from "@/constants/constants";
-import {
-  formatValue,
-  parseInputDate,
-  transformValue,
-} from "@/utils";
+import { formatValue, parseInputDate, transformValue } from "@/utils";
 import { createDateFromString } from "@/utils";
 
 export function withRangeLogic(
@@ -85,6 +81,7 @@ export function withRangeLogic(
           handleCalendarVisibility={handleCalendarVisibility}
           isValid={isValid}
           labelText={"From:"}
+          dataTestid={"range-from-input"}
         />
         <Input
           inputText={inputToText}
@@ -93,6 +90,7 @@ export function withRangeLogic(
           handleCalendarVisibility={handleCalendarVisibility}
           isValid={isValid}
           labelText={"To:"}
+          dataTestid={"range-to-input"}
         />
         {isCalendarVisible && <Component />}
       </>

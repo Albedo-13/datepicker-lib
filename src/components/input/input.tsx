@@ -19,6 +19,7 @@ export function Input({
   handleCalendarVisibility,
   isValid,
   labelText,
+  dataTestid,
 }: InputType) {
   return (
     <>
@@ -32,6 +33,7 @@ export function Input({
           value={inputText}
           type="text"
           placeholder="Choose Date"
+          data-testid={dataTestid}
         />
         <InputButtonRight onClick={handleInputClear}>
           <ClearSvg />

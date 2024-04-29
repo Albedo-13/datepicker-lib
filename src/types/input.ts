@@ -7,4 +7,5 @@ export type InputType = {
   handleCalendarVisibility: VoidFunction;
   isValid: boolean;
   labelText?: string;
+  dataTestid?: string;
 };
