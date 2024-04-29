@@ -28,8 +28,11 @@ export default function Todo({
           onChange={handleInputChange}
           type="text"
           placeholder="Add Todo"
+          data-testid="todo-input"
         />
-        <TodoAddButton onClick={handleAddTodo}>Add</TodoAddButton>
+        <TodoAddButton onClick={handleAddTodo} data-testid="todo-add">
+          Add
+        </TodoAddButton>
       </TodoInputWrapper>
       {todos
         .filter((todo) => isDatesEqual(new Date(todo.date), date))
@@ -39,6 +42,7 @@ export default function Todo({
             <TodoItemRemoveButton
               onClick={handleRemoveTodo(todo.id)}
               aria-label="remove"
+              data-testid="todo-remove"
             >
               ✕
             </TodoItemRemoveButton>
