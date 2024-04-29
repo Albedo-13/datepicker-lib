@@ -4,7 +4,7 @@
     "name": "Albedo-13"
   },
   "description": "A datepicker library",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "type": "module",
   "main": "dist/src/index.js",
