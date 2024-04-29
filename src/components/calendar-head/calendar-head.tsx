@@ -28,11 +28,11 @@ export function CalendarHead({
         <CalendarHeadButton onClick={handleYearChange(-1)}>
           <PrevDoubleSvg />
         </CalendarHeadButton>
-        <CalendarHeadButton onClick={handleMonthChange(-1)}>
+        <CalendarHeadButton onClick={handleMonthChange(-1)} data-testid="prev-month">
           <PrevSingleSvg />
         </CalendarHeadButton>
       </CalendarHeadButtonWrapper>
-      <CalendarDate onClick={handleCalendarTypeChange}>
+      <CalendarDate onClick={handleCalendarTypeChange} data-testid="calendar-type">
         {
           {
             weeks: `${MONTHS[month - 1]} ${year}`,
@@ -41,7 +41,7 @@ export function CalendarHead({
         }
       </CalendarDate>
       <CalendarHeadButtonWrapper>
-        <CalendarHeadButton onClick={handleMonthChange(1)}>
+        <CalendarHeadButton onClick={handleMonthChange(1)} data-testid="next-month">
           <NextSingleSvg />
         </CalendarHeadButton>
         <CalendarHeadButton onClick={handleYearChange(1)}>
