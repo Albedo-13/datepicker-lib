@@ -26,22 +26,23 @@ export function CalendarHead({
   handleCalendarTypeChange,
 }: CalendarHeadType) {
   const rangedYears = getYearsInRange(minValue, maxValue);
-  const [minYear, maxYear] = [
-    rangedYears[0],
-    rangedYears[rangedYears.length - 1],
-  ];
+  const [minYear, maxYear] = [rangedYears[0], rangedYears.at(-1)];
+  
+  const isCalendarMonthButtonsVisible = type === "weeks";
+  const isCalendarYearButtonsVisible = type !== "years";
+
   return (
     <CalendarHeadWrapper>
       <CalendarHeadButtonWrapper>
         <CalendarHeadButton
           onClick={handleYearChange(-1)}
-          data-visible={type !== "years"}
+          data-visible={isCalendarYearButtonsVisible}
         >
           <PrevDoubleSvg />
         </CalendarHeadButton>
         <CalendarHeadButton
           onClick={handleMonthChange(-1)}
-          data-visible={type === "weeks"}
+          data-visible={isCalendarMonthButtonsVisible}
           data-testid="prev-month"
         >
           <PrevSingleSvg />
@@ -62,14 +63,14 @@ export function CalendarHead({
       <CalendarHeadButtonWrapper>
         <CalendarHeadButton
           onClick={handleMonthChange(1)}
-          data-visible={type === "weeks"}
+          data-visible={isCalendarMonthButtonsVisible}
           data-testid="next-month"
         >
           <NextSingleSvg />
         </CalendarHeadButton>
         <CalendarHeadButton
           onClick={handleYearChange(1)}
-          data-visible={type !== "years"}
+          data-visible={isCalendarYearButtonsVisible}
         >
           <NextDoubleSvg />
         </CalendarHeadButton>
