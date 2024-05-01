@@ -1,10 +1,11 @@
-export { createDate } from "./dateUtils/create-date";
+export { createDate, createDateNow } from "./dateUtils/create-date";
 export { createDateFromString } from "./dateUtils/create-date-from-string";
 export { nextDate } from "./dateUtils/create-date-from-string";
 export { getDaysFromMonth } from "./dateUtils/get-days-from-month";
 export { getStartDateFromPreviousMonth } from "./dateUtils/get-start-date-from-previous-month";
 export { getTimezoneOffset } from "./dateUtils/get-timezone-offset";
 export { getWeekdayOfMonthStart } from "./dateUtils/get-weekday-of-month-start";
+export { getYearsInRange } from "./dateUtils/get-years-in-range";
 export { isBetweenDates } from "./dateUtils/is-between-dates";
 export { isDateBetweenMinMaxDates } from "./dateUtils/is-date-between-min-max-dates";
 export { isDatesEqual } from "./dateUtils/is-dates-equal";

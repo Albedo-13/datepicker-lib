@@ -5,7 +5,7 @@ import { withRangeLogic } from "@/hocs/with-range-logic";
 import { GlobalStyles } from "@/styles/globalStyles";
 import { Wrapper } from "@/styles/styles";
 import { DatePickerProps } from "@/types/date-picker-props";
-import { createDateFromString } from "@/utils";
+import { createDateFromString, createDateNow } from "@/utils";
 
 import { Calendar } from "../calendar/calendar";
 
@@ -18,10 +18,10 @@ export function RangePicker({
   isWeekendsVisible = true,
 }: DatePickerProps) {
   const [fromRange, setFromRange] = useState<Date>(
-    createDateFromString(value) || new Date()
+    createDateFromString(value) || createDateNow()
   );
   const [toRange, setToRange] = useState<Date>(
-    createDateFromString(value) || new Date()
+    createDateFromString(value) || createDateNow()
   );
 
   const CalendarWithLogic = withCalendarLogic(

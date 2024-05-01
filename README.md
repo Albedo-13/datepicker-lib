@@ -1,5 +1,10 @@
 # Tестовое задание библиотека Modsen DatePicker
 
+## Деплой
+
+📍 chromatic: https://662fdd927f92803bfd81fa4d-jmubkbmpvp.chromatic.com/?path=/docs/mygroup-datepicker--docs
+
+📍 npm: https://www.npmjs.com/package/datepicker-lib-albedo
 
 ## Содержание
 

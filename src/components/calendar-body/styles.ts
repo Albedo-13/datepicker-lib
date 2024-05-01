@@ -25,3 +25,11 @@ export const CalendarBodyMonthsWrapper = styled.div`
   grid-template-columns: repeat(4, calc(100% / 4));
   justify-items: center;
 `;
+
+export const CalendarBodyYearsWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, calc(100% / 4));
+  justify-items: center;
+  max-height: calc(${variables.spacing.s350} + 2px);
+  overflow-y: auto
+`;

@@ -58,6 +58,9 @@ export function withCalendarLogic(
           setType("months");
           break;
         case "months":
+          setType("years");
+          break;
+        case "years":
           setType("weeks");
           break;
         default:
