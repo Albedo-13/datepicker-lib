@@ -80,19 +80,9 @@
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.7.0"
   },
-  "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^6.1.1"
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,html,css,json}": [
       "npx prettier --write"
     ]
-  },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "styled-components": "^6.1.1"
   }
 }
