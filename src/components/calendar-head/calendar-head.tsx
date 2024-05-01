@@ -25,7 +25,7 @@ export function CalendarHead({
   handleYearChange,
   handleCalendarTypeChange,
 }: CalendarHeadType) {
-  const rangedYears = getYearsInRange(minValue, maxValue);
+  const rangedYears = getYearsInRange(minValue as string, maxValue as string);
   const [minYear, maxYear] = [rangedYears[0], rangedYears.at(-1)];
   
   const isCalendarMonthButtonsVisible = type === "weeks";

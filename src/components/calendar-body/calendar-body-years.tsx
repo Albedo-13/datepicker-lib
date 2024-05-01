@@ -21,7 +21,7 @@ export function CalendarBodyYears({
 }: CalendarBodyYearsType) {
   return (
     <>
-      {getYearsInRange(minValue, maxValue).map((year, id) => {
+      {getYearsInRange(minValue as string, maxValue as string).map((year, id) => {
         const date = createDate(year, FIRST_MONTH, FIRST_DAY);
         const outside = !isDateBetweenMinMaxDates(date, minValue, maxValue);
 
