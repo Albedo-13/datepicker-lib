@@ -58,7 +58,6 @@ export function CalendarBody({
       {type === "years" && (
         <CalendarBodyYearsWrapper>
           <CalendarBodyYears
-            year={year}
             setType={setType}
             fromRange={fromRange}
             setFromRange={setFromRange}

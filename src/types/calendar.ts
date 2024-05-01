@@ -8,6 +8,8 @@ export type CalendarHeadType = {
   year: number;
   month: number;
   type: CalendarType;
+  maxValue: string;
+  minValue: string;
   handleMonthChange: (amount: number) => VoidFunction;
   handleYearChange: (amount: number) => VoidFunction;
   handleCalendarTypeChange: VoidFunction;
@@ -22,8 +24,8 @@ export type CalendarBodyType = {
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;
   setToRange?: Dispatch<SetStateAction<Date>>;
-  maxValue?: string;
-  minValue?: string;
+  maxValue: string;
+  minValue: string;
   isHolidaysVisible: boolean;
   isWeekendsVisible: boolean;
   startWeekday: WeekdaysItemType;
@@ -38,9 +40,11 @@ export type CalendarBodyMonthsType = {
   setFromRange: Dispatch<SetStateAction<Date>>;
   toRange?: Date;
   setToRange?: Dispatch<SetStateAction<Date>>;
-  maxValue?: string;
-  minValue?: string;
+  maxValue: string;
+  minValue: string;
 };
+
+export type CalendarBodyYearsType = Omit<CalendarBodyMonthsType, "year">;
 
 export type CalendarCellType = {
   date: Date;

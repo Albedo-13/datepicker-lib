@@ -30,6 +30,8 @@ export function Calendar({
         year={year}
         month={month}
         type={type}
+        maxValue={maxValue}
+        minValue={minValue}
         handleMonthChange={handleMonthChange}
         handleYearChange={handleYearChange}
         handleCalendarTypeChange={handleCalendarTypeChange}

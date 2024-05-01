@@ -10,9 +10,9 @@ export default {
 
 export const DefaultRangePicker = {
   args: {
-    value: null,
-    maxValue: null,
-    minValue: null,
+    value: "19/12/2024",
+    maxValue: "10/01/2026",
+    minValue: "20/02/2020",
     startFromMonday: true,
     isHolidaysVisible: true,
     isWeekendsVisible: true,
