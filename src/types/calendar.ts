@@ -2,7 +2,7 @@ import type { Dispatch, SetStateAction } from "react";
 
 import type { WeekdaysItemType } from "./weekdays";
 
-export type CalendarType = "weeks" | "months";
+export type CalendarType = "weeks" | "months" | "years";
 
 export type CalendarHeadType = {
   year: number;

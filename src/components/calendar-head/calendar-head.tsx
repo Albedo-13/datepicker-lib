@@ -28,20 +28,30 @@ export function CalendarHead({
         <CalendarHeadButton onClick={handleYearChange(-1)}>
           <PrevDoubleSvg />
         </CalendarHeadButton>
-        <CalendarHeadButton onClick={handleMonthChange(-1)} data-testid="prev-month">
+        <CalendarHeadButton
+          onClick={handleMonthChange(-1)}
+          data-testid="prev-month"
+        >
           <PrevSingleSvg />
         </CalendarHeadButton>
       </CalendarHeadButtonWrapper>
-      <CalendarDate onClick={handleCalendarTypeChange} data-testid="calendar-type">
+      <CalendarDate
+        onClick={handleCalendarTypeChange}
+        data-testid="calendar-type"
+      >
         {
           {
             weeks: `${MONTHS[month - 1]} ${year}`,
             months: `${year}`,
+            years: `xxxx-xxxx`, // TODO: between min & max args years
           }[type]
         }
       </CalendarDate>
       <CalendarHeadButtonWrapper>
-        <CalendarHeadButton onClick={handleMonthChange(1)} data-testid="next-month">
+        <CalendarHeadButton
+          onClick={handleMonthChange(1)}
+          data-testid="next-month"
+        >
           <NextSingleSvg />
         </CalendarHeadButton>
         <CalendarHeadButton onClick={handleYearChange(1)}>

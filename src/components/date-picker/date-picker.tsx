@@ -6,6 +6,7 @@ import { GlobalStyles } from "@/styles/globalStyles";
 import { Wrapper } from "@/styles/styles";
 import { DatePickerProps } from "@/types/date-picker-props";
 import { createDateFromString } from "@/utils";
+import { createDateNow } from "@/utils/dateUtils/create-date";
 
 import { Calendar } from "../calendar/calendar";
 
@@ -18,7 +19,7 @@ export function DatePicker({
   isWeekendsVisible = true,
 }: DatePickerProps) {
   const [date, setDate] = useState<Date>(
-    createDateFromString(value) || new Date()
+    createDateFromString(value) || createDateNow()
   );
 
   const CalendarWithLogic = withCalendarLogic(
