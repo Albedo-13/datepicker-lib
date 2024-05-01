@@ -53,7 +53,8 @@ const esmConfig = {
       sourcemap: isDev,
     },
   ],
-  external: ["react"],
+  external: ["react", "styled-components"],
+  globals: { "styled-components": "styled" },
   plugins: esmPlugins,
 };
 

@@ -8,6 +8,7 @@ export const CalendarHeadWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-top: ${variables.spacing.s10};
+  min-height: ${variables.spacing.s40};
 `;
 
 export const CalendarHeadButtonWrapper = styled.div`
@@ -17,6 +18,10 @@ export const CalendarHeadButtonWrapper = styled.div`
 export const CalendarHeadButton = styled.button`
   ${baseButton}
   ${rounded}
+
+  &[data-visible="false"] {
+    display: none;
+  }
 
   &:hover {
     background-color: ${variables.color.minorGray};
