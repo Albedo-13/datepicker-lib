@@ -21,7 +21,7 @@
     "publish": "npm run build && npm publish",
     "prepare": "husky",
     "test": "jest",
-    "chromatic": "npx chromatic --project-token=chpt_3b68f5206566f40"
+    "chromatic": "npx chromatic --project-token=chpt_3bfa6207b182813"
   },
   "devDependencies": {
     "@babel/core": "^7.24.4",
