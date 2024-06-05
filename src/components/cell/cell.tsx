@@ -23,13 +23,13 @@ export function Cell({
   const handleMouseDownClick = () => {
     if (!outside) {
       setFromRange(date);
-      setToRange?.(date)
+      setToRange?.(date);
     }
   };
 
   const handleMouseUpClick = () => {
     if (!outside) {
-      setToRange?.(date)
+      setToRange?.(date);
       setType ? setType("weeks") : null;
     }
   };
